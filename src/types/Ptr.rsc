@@ -3,20 +3,22 @@ module types::Ptr
 
 import ParseTree;
 import vis::ParseTree;
+import IO;
 
+layout L = ();
 lexical WS = [\ \t\n\r];
-syntax Ptr = PtrLHS lhs WS* "=" WS* PtrRHS rhs WS* ";";
-syntax PtrLHS = PtrName f WS* PtrNameArgs args;
-syntax PtrRHS = PtrExpr rhs;
-syntax PtrNameArgs = {PtrName WS*}+;
-syntax PtrExpr
-	= PtrAtom
-	> left PtrExpr WS* "*" WS* PtrExpr
-	> left PtrExpr WS* "+" WS* PtrExpr
+lexical Ptr = PtrLHS lhs WS* "=" WS* PtrRHS rhs WS* ";";
+lexical PtrLHS = PtrName f WS* PtrNameArgs args;
+lexical PtrRHS = PtrExpr rhs;
+lexical PtrNameArgs = {PtrName WS*}+;
+lexical PtrExpr
+	= PtrAtom a
+	> left PtrExpr l WS* "*" WS* PtrExpr r
+	> left PtrExpr l WS* "+" WS* PtrExpr r
 	;
-syntax PtrAtom
-	= PtrName
-	| PtrNumber
+lexical PtrAtom
+	= PtrName name
+	| PtrNumber number
 	;
 lexical PtrName = [a-z]+ !>> [a-z];
 lexical PtrNumber = [0-9]+ !>> [0-9];
@@ -27,7 +29,8 @@ public void visualise(Ptr p) = renderParsetree(p);
 
 Ptr example = parse(#Ptr,"f arg = arg +1;");
 
-test bool vptr1() = parse(#Ptr,"f arg = arg +1;");
+test bool vptr1() = validate(example);
 
-void visptr1() = visualise(parse(#Ptr,"f arg = arg +1;"));
+void visptr1() = visualise(example);
+void pptr1() {iprintln(example);}
 void visptr2() = visualise(parse(#Ptr,"f arg = 1+2*2+1;"));

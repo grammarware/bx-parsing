@@ -11,22 +11,24 @@ syntax CstLHS = CstName f CstNameArgs args;
 syntax CstRHS = CstExpr rhs;
 syntax CstNameArgs = {CstName WS*}+;
 syntax CstExpr
-	= CstAtom
-	> left CstExpr "*" CstExpr
-	> left CstExpr "+" CstExpr
+	= CstAtom a
+	> left CstExpr l "*" CstExpr r
+	> left CstExpr l "+" CstExpr r
 	;
 syntax CstAtom
-	= CstName
-	| CstNumber
+	= CstName name
+	| CstNumber number
 	;
 lexical CstName = [a-z]+ !>> [a-z];
 lexical CstNumber = [0-9]+ !>> [0-9];
+
+Cst example = parse(#start[Cst],"f arg = arg +1;").top;
 
 public bool validate(Cst p) = /amb(_) !:= p;
 
 public void visualise(Cst p) = renderParsetree(p);
 
-test bool vCst1() = parse(#start[Cst],"f arg = arg +1;");
+test bool vCst1() = validate(example);
 
 void visCst1() = visualise(parse(#start[Cst],"f arg = arg +1;").top);
 void visCst2() = visualise(parse(#start[Cst],"f arg = 1+2*2+1;").top);
