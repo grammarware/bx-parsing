@@ -3,6 +3,8 @@ module types::Str
 
 alias Str = str;
 
+Str example = "f arg = arg +1;";
+
 public bool validate(Str s) = true;
 
-test bool vstr1() = validate("f arg = arg +1;");
+test bool vstr1() = validate(example);
