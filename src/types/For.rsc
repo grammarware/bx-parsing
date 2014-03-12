@@ -25,6 +25,9 @@ public bool validate(For p) = true;
 
 public void visualise(For p) = renderParsetree(p);
 
+For example = parse(#For,"f arg = arg +1;");
+
+test bool vfor0() = /amb(_) := example;
 test bool vfor1() = /amb(_) := parse(#For,"f arg = 1+1+1;");
 test bool vfor2() = /amb(_) := parse(#For,"f arg = 1+1*1;");
 test bool vfor3() = /amb(_) := parse(#For,"f arg = 1*1+1;");
