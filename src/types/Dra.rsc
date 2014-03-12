@@ -1,4 +1,12 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	Dra is a low level drawing specification in terms of displayed entities and their
+	coordinates. Since in the case study we opted for "textual graphics", the coordinates
+	are modelled by the Rascal location type, see
+	http://tutor.rascal-mpl.org/Rascal/Expressions/Values/Location/Location.html
+	This type has been designed to model locations in the source code, so we stretch it
+	only slightly to mdoel locations on our textual "canvas".
+}
 module types::Dra
 
 data Dra = drapicture(list[DraElement] es);

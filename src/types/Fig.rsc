@@ -1,4 +1,10 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	Fig is the highest level model in the graphical representation world. It abstracts away from
+	details like position, colour and form, and focuses on the concepts.
+	In our case study, Fig is an algebraic data type that distinguishes between variables and
+	literals, and has binary expressions.
+}
 module types::Fig
 
 data Fig = figfunctionmodel(FigName name, FigArgs args, FigExpr body);
