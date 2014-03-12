@@ -11,3 +11,9 @@ data FigExpr
 	| figbinary(FigName op, FigExpr left, FigExpr right)
 	;
 alias FigNumber = int;
+
+Fig example = figfunctionmodel("f",["arg"],figbinary("+",figvariable("arg"),figliteral(1)));
+
+public bool validate(Fig f) = /figvariable("") !:= f;
+
+test bool tfig1() = validate(example);
