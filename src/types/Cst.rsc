@@ -26,7 +26,7 @@ public bool validate(Cst p) = /amb(_) !:= p;
 
 public void visualise(Cst p) = renderParsetree(p);
 
-bool vCst1() = parse(#start[Cst],"f arg = arg +1;");
+test bool vCst1() = parse(#start[Cst],"f arg = arg +1;");
 
 void visCst1() = visualise(parse(#start[Cst],"f arg = arg +1;").top);
 void visCst2() = visualise(parse(#start[Cst],"f arg = 1+2*2+1;").top);
