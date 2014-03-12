@@ -3,7 +3,9 @@ module types::Tkl
 
 alias Tkl = list[str];
 
-public bool validate(Tkl ss) = (true | it && s != "" | s <- ss);
+bool isEmpty(str s) = s == ""; 
+
+public bool validate(Tkl ss) = (true | it && !isEmpty(s) | s <- ss);
 
 test bool vtkl1() =  validate(["f"," ","arg"," ","="," ","arg"," ","+","1",";"]);
 test bool vtkl2() = !validate(["f"," ","arg"," ","="," ","arg"," ","+","","1",";"]);
