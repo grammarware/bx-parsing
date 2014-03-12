@@ -25,13 +25,13 @@ public bool validate(Lex ls)
 
 test bool vlex1() = validate(lexfundef(
 						[alphanumeric("f"),alphanumeric("arg")],
-						[alphanumeric("arg"),ssymbol("+"),numeric("1"),ssymbol(";")]));
+						[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
 test bool vlex2() = !validate(lexfundef(
 						[alphanumeric("f")],
-						[alphanumeric("arg"),ssymbol("+"),numeric("1"),ssymbol(";")]));
+						[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
 test bool vlex3() = !validate(lexfundef(
 						[alphanumeric("f"),alphanumeric("!")],
-						[alphanumeric("arg"),ssymbol("+"),numeric("1"),ssymbol(";")]));
+						[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
 test bool vlex4() = !validate(lexfundef(
 						[alphanumeric("f"),alphanumeric("arg")],
-						[alphanumeric("arg"),ssymbol("plus"),numeric("1"),ssymbol(";")]));
+						[alphanumeric("arg"),ssymbol("plus"),numeric(1),ssymbol(";")]));

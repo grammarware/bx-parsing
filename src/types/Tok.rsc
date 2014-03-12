@@ -6,7 +6,7 @@ import types::Tkl;
 
 alias Tok = list[str];
 
-bool isToken(str s) = !types::Tkl::isEmpty(strip(s)); 
+bool isToken(str s) = !types::Tkl::isEmpty(trim(s)); 
 
 public bool validate(Tok ss) = (true | it && isToken(s) | s <- ss);
 
