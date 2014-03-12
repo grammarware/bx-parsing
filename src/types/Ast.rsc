@@ -15,11 +15,13 @@ data AstExpr
 	;
 alias AstNumber = int;
 
+Ast example = astfundef("f",["arg"],
+				astbplus(astvariable("arg"),astliteral(1)));
+
 public bool validate(Ast a)
 	= (true | it && !isEmpty(n) && (n in a.args) | /astvariable(AstName n) <- a)
 	;
 
-test bool vast1() = validate(astfundef("f",["arg"],
-							astbplus(astvariable("arg"),astliteral(1))));
+test bool vast1() = validate(example);
 test bool vast2() = !validate(astfundef("f",["arg"],
 							astbplus(astvariable("x"),astliteral(1))));

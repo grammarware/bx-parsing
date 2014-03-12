@@ -1,7 +1,6 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 module mappings::Ptr2Cst
 
-import IO;
 import ParseTree;
 import types::Ptr;
 import types::Cst;
@@ -84,11 +83,5 @@ CstAtom ptr2cst((PtrAtom)`<PtrNumber n>`)
 // cheating, but not really
 CstName ptr2cst(PtrName n) = parse(#CstName,"<n>");
 CstNumber ptr2cst(PtrNumber n) = parse(#CstNumber,"<n>");
-
-void z()
-{
-	//iprintln(types::Ptr::example);
-	println(ptr2cst(types::Ptr::example));
-}
 
 test bool vptr2cst1() = ptr2cst(types::Ptr::example) == types::Cst::example;
