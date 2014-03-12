@@ -2,7 +2,6 @@
 module mappings::Lex2Ast
 
 import IO;
-import ParseTree;
 import types::Lex;
 import types::Ast;
 
