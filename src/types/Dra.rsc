@@ -1,11 +1,6 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 module types::Dra
 
-import IO;
-import List;
-import String;
-import types::Pic;
-
 data Dra = drapicture(list[DraElement] es);
 data DraElement
 	= drasquare(str label, loc where)
@@ -25,27 +20,7 @@ Dra example = drapicture([
 							drasymbol(")",   |stdin:///|(41,1,<8,1>,<8,2>))
 						]);
 
-str dra2pic(Dra d)
-{
-	list[str] res = [];
-	for (DraElement e <- d.es)
-	{
-		assert e.where.begin.line == e.where.end.line;
-		if (drasymbol(_,_) !:= e)
-			assert e.where.length == size(e.label)+2;
-		else
-			assert e.where.length == size(e.label);
-		while (e.where.begin.line >= size(res)) res += [""];
-		while (e.where.begin.column > size(res[e.where.begin.line])) res[e.where.begin.line] += "\t";
-		res[e.where.begin.line][e.where.begin.column..e.where.end.column] = bracketit(e);
-	}
-	return intercalate("\n",tail(res));
-}
+public bool validate(Dra d) = 
+	(true | it && e.where.length == e.where.end.column-e.where.begin.column | DraElement e <- d.es);
 
-str bracketit(drasquare(str label, loc _)) = "[<label>]";
-str bracketit( draround(str label, loc _)) = "(<label>)";
-str bracketit( dracurly(str label, loc _)) = "{<label>}";
-str bracketit(drasymbol(str label, loc _)) = label;
-default str bracketit(DraElement e) = "ERROR";
-
-test bool vdra1() = dra2pic(example) == types::Pic::example;
+test bool vdra1() = validate(example);
