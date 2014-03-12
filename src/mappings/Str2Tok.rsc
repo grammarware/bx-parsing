@@ -2,34 +2,15 @@
 module mappings::Str2Tok
 
 import String;
+import mappings::Str2Tkl;
 import types::Str;
 import types::Tok;
+import types::Tkl;
 
 public Tok str2tok(Str p)
 {
-	 //1 - alpha, 2 - num, 3 - whitespace, 4 - smth
-	int state = 0, curchar;
-	str curtoken = "";
-	list[str] tokens = [];
-	for (int c <- chars(p))
-	{
-		if (/[a-z]/ := stringChar(c)) curchar = 1;
-		elseif (/[0-9]/ := stringChar(c)) curchar = 2;
-		elseif (/[\ \t\n\r]/ := stringChar(c)) curchar = 3;
-		else curchar = 4;
-		if (curchar == 3)
-		{
-			if (curtoken!="") tokens += curtoken;
-			curtoken = "";
-			continue;
-		}
-		if (state == 1 && curchar == 1) curtoken += stringChar(c);
-		elseif (state == 2 && curchar == 2) curtoken += stringChar(c);
-		else {if (curtoken!="") tokens += curtoken; curtoken = stringChar(c);}
-		state = curchar;
-	}
-	if (curtoken!="") tokens += curtoken;
-	return tokens;
+	Tkl ts = str2tkl(p);
+	return [t | str t <- str2tkl(p), trim(t) != ""]; 
 }
 
 test bool vstr2tok1() = str2tok(types::Str::example) == types::Tok::example;
