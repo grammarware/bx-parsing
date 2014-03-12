@@ -10,6 +10,10 @@ data TokToken
 	;
 data Lex = lexfundef(list[TokToken] left, list[TokToken] right);
 
+Lex example = lexfundef(
+				[alphanumeric("f"),alphanumeric("arg")],
+				[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]);
+
 bool isTokToken(numeric(int n)) = true;
 bool isTokToken(alphanumeric(str a)) = /[a-z0-9]+/ := a;
 bool isTokToken(ssymbol(str s)) = /[a-z0-9]+/ !:= s;
@@ -23,9 +27,7 @@ public bool validate(Lex ls)
 	&& isTokTokens(ls.right)
 	;
 
-test bool vlex1() = validate(lexfundef(
-						[alphanumeric("f"),alphanumeric("arg")],
-						[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
+test bool vlex1() = validate(example);
 test bool vlex2() = !validate(lexfundef(
 						[alphanumeric("f")],
 						[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
