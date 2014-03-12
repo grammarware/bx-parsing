@@ -7,10 +7,16 @@ import mappings::Tkl2Tok;
 import mappings::Tok2Tkl;
 import mappings::Tok2Lex;
 import mappings::Lex2Tok;
+import mappings::Gra2Dra;
+import mappings::Dra2Pic;
 import types::Str;
 import types::Tkl;
 import types::Tok;
 import types::Lex;
+import types::Pic;
+import types::Dra;
+import types::Gra;
+import types::Fig;
 
 public Tok str2tok(Str p) = tkl2tok(str2tkl(p));
 test bool vstr2tok1() = str2tok(types::Str::example) == types::Tok::example;
@@ -30,3 +36,6 @@ test bool vlex2str1() = lex2str(types::Lex::example) == types::Str::defexample;
 
 public Tkl lex2tkl(Lex p) = tok2tkl(lex2tok(p));
 test bool vlex2tkl1() = lex2tkl(types::Lex::example) == types::Tkl::defexample;
+
+public Pic gra2pic(Gra p) = dra2pic(gra2dra(p));
+test bool vgra2pic1() = gra2pic(types::Gra::example) == types::Pic::example;
