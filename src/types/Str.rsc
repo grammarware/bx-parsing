@@ -1,4 +1,7 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	Str is a string, the simplest possible representation of a textual program.
+}
 module types::Str
 
 alias Str = str;
