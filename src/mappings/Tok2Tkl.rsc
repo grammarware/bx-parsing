@@ -15,7 +15,4 @@ public Tkl tok2tkl(Tok p)
 	+ [*[" ",t] | str t <- tail(p)];
 
 test bool vtok2tkl1() = tok2tkl(types::Tok::example) != types::Tkl::example;
-test bool vtok2tkl2()
-	= tok2tkl(types::Tok::example)
-	== ["f"," ","arg"," ","="," ","arg"," ","+"," ","1"," ",";"];
-//                                              ^^^     ^^^
+test bool vtok2tkl2() = tok2tkl(types::Tok::example) == types::Tkl::defexample;

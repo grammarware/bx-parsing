@@ -4,6 +4,7 @@ module types::Tkl
 alias Tkl = list[str];
 
 Tkl example = ["f"," ","arg"," ","="," ","arg"," ","+","1",";"];
+Tkl defexample = ["f"," ","arg"," ","="," ","arg"," ","+"," ","1"," ",";"];
 
 bool isEmpty(str s) = s == ""; 
 

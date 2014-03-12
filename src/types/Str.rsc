@@ -4,6 +4,7 @@ module types::Str
 alias Str = str;
 
 Str example = "f arg = arg +1;";
+Str defexample = "f arg = arg + 1 ;";
 
 public bool validate(Str s) = true;
 
