@@ -1,4 +1,13 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	Instead of going from Gra to Dra and then to Pic, we utilise Rascal pretty-printing
+	functionality, and make a much more reliable and human friendly printer. 
+	More about string comprehensions in the Rascal Tutor:
+	http://tutor.rascal-mpl.org/Rascal/Expressions/Values/String/String.html
+	
+	All the low level computations on positioning our "boxes" are actually implicitly present
+	here since this is the semantics of the Rascal ' modifier in string comprehensions.
+}
 module specific::Gra2Pic
 
 import types::Gra;
@@ -7,13 +16,6 @@ import mappings::MultiStep;
 
 import List;
 import String;
-
-@doc{
-	Instead of going from Gra to Dra and then to Pic, we utilise Rascal pretty-printing
-	functionality, and make a much more reliable and human friendly printer. 
-	More about string comprehensions in the Rascal Tutor:
-	http://tutor.rascal-mpl.org/Rascal/Expressions/Values/String/String.html
-}
 
 public str gra2pic_r(Gra g) = intercalate("\n",[s | str s <- split("\n",gra2pic_r(g.root)), trim(s) != ""]);
 // GraElement
