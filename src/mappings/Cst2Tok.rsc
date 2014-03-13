@@ -1,4 +1,13 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	The Cst to Tok mapping is a form of limited unparsing: we retain the information about tokens, but drop
+	the hierarchical details and disregard layout info.
+	This is done independently of a language definition: we just produce one token for each preterminal
+	(a nonterminal defined with a lexical production rule, in Rascal terms).
+	Due to Rascal trying to always make the language workbench user unaware of the Cst/Ptr distinction,
+	we need to make an extra step there: the layout information is actually still in the tree, but we can
+	easily identify it as such and disregard when traversing tree nodes with a low level visitor.
+}
 module mappings::Cst2Tok
 
 import ParseTree;

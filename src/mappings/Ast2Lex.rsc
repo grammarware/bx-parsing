@@ -1,15 +1,15 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	This mapping is much more simple than Lex2Ast: it is always easier to lose information
+	about structure than to obtain it, even though the information per se is out there.
+	Notice how this mapping is also free from almost any commitment to a language definition.
+}
 module mappings::Ast2Lex
 
 import IO;
 import types::Lex;
 import types::Ast;
 
-@doc{
-	This mapping is much more simple than Lex2Ast: it is always easier to lose information
-	about structure than to obtain it, even though the information per se is out there.
-	Notice how this mapping is also free from almost any commitment to a language definition.
-}
 public Lex ast2lex(Ast p)
 	= lexfundef(
 		[alphanumeric(p.name)] + [alphanumeric(a) | a <- p.args],

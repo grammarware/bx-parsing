@@ -1,4 +1,11 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	Cst to Ptr mapping is a formatting issue: we add layout information here, which (in the unidirectional setup)
+	is added in standard quantities (usually to achieve minimal readability and parsability).
+	Just as with all “...to Cst” mappings, this one uses a separate library which rebuilds a tree for Ptr,
+	since Rascal currently does not provide this functionality from the box, and we would like to abstract
+	from the boilerplate.
+}
 module mappings::Cst2Ptr
 
 import List;

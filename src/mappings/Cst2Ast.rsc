@@ -18,16 +18,13 @@ Ast cst2ast((Cst)`<CstLHS lhs>=<CstRHS rhs>;`)
 
 AstArgs cst2ast((CstNameArgs)`<CstName+ ns>`) = ["<a>" | /CstName a <- ns];
 
-AstExpr cst2ast((CstExpr)`<CstAtom a>`)
-{
-	if ((CstAtom)`<CstName name>` := a) return astvariable("<name>");
-	if ((CstAtom)`<CstNumber number>` := a) return astliteral(toInt("<number>"));
-	return astvariable("ERROR");
-}
-
+AstExpr cst2ast((CstExpr)`<CstAtom a>`) = cst2ast(a); 
 AstExpr cst2ast((CstExpr)`<CstExpr l> * <CstExpr r>`)
 	= astbmul(cst2ast(l), cst2ast(r));
 AstExpr cst2ast((CstExpr)`<CstExpr l> + <CstExpr r>`)
 	= astbplus(cst2ast(l), cst2ast(r));
+
+AstExpr cst2ast((CstAtom)`<CstName name>`) = astvariable("<name>");
+AstExpr cst2ast((CstAtom)`<CstNumber number>`) = astliteral(toInt("<number>"));
 
 test bool vcst2ast1() = cst2ast(types::Cst::example) == types::Ast::example;
