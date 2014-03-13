@@ -12,3 +12,4 @@ Str defexample = "f arg = arg + 1 ;";
 public bool validate(Str s) = true;
 
 test bool vstr1() = validate(example);
+test bool vstr2() = validate(defexample);

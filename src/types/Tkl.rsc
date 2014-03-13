@@ -27,3 +27,4 @@ public bool validate(Tkl ss) = (true | it && !isEmpty(s) | s <- ss);
 
 test bool vtkl1() =  validate(example);
 test bool vtkl2() = !validate(["f"," ","arg"," ","="," ","arg"," ","+","","1",";"]);
+test bool vtkl3() =  validate(defexample);

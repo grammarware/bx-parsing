@@ -7,10 +7,9 @@ import types::Gra;
 
 public Gra cst2gra(Cst p)
 	= gramodel(graprefix(grabox(gracurly(),"<p.lhs.f>"),
-					graconfix(graround(),grainfix(graarrow(),[
-						maybewrap([grabox(grasquare(),"<n>") | /CstName n <- p.rhs.args]),
-						mapexpr(p.rhs.rhs)]
-		))));
+		graconfix(graround(),grainfix(graarrow(),[
+			maybewrap([grabox(grasquare(),"<n>") | /CstName n <- p.rhs.args]),
+			mapexpr(p.rhs.rhs)]))));
 
 GraElement maybewrap([GraElement n]) = n;
 GraElement maybewrap(list[GraElement] ns) = grainfix(graempty(),es); 

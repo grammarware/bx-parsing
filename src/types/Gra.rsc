@@ -29,19 +29,15 @@ data GraType
 	;
 alias GraLabel = str;
 
-Gra example = gramodel(graprefix(grabox(gracurly(),"f"),
-					graconfix(graround(),
-						grainfix(graarrow(),
-							[
-								grabox(grasquare(),"arg"),
-								graprefix(
-									grabox(gracurly(),"+"),
-										grainfix(graempty(),[grabox(grasquare(),"arg"),grabox(graround(),"1")])
-								)
-							]
-						)
-					)
-				));
+Gra example =
+	gramodel(graprefix(grabox(gracurly(),"f"),
+		graconfix(graround(),
+			grainfix(graarrow(),[
+					grabox(grasquare(),"arg"),
+					graprefix(
+						grabox(gracurly(),"+"),
+						grainfix(graempty(),[grabox(grasquare(),"arg"),grabox(graround(),"1")])
+	)]))));
 
 public bool validate(Gra p)
 	= /grabox(_,"") !:= p
