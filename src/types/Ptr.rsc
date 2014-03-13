@@ -23,7 +23,7 @@ lexical WS = [\ \t\n\r];
 lexical Ptr = PtrLHS lhs WS* "=" WS* PtrRHS rhs WS* ";";
 lexical PtrLHS = PtrName f WS* PtrNameArgs args;
 lexical PtrRHS = PtrExpr rhs;
-lexical PtrNameArgs = {PtrName WS*}+;
+lexical PtrNameArgs = {PtrName WS*}+ ns;
 lexical PtrExpr
 	= PtrAtom a
 	> left PtrExpr l WS* "*" WS* PtrExpr r

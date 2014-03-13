@@ -4,6 +4,7 @@ module mappings::Ptr2Cst
 import ParseTree;
 import types::Ptr;
 import types::Cst;
+import lib::CstFactory;
 
 @doc{
 	Unfortunately, Rascal allows us to pattern match with concrete syntax, but not to construct
@@ -13,75 +14,22 @@ import types::Cst;
 	One of the reasons is the obliviousness Rascal provides for its users who do not want
 	to distinguish between Ptr and Cst.
 }
-Cst ptr2cst(Ptr p)
-{
-	Cst res = (Cst)`g x=x;`;
-	res.lhs = ptr2cst(p.lhs);
-	res.rhs = ptr2cst(p.rhs);
-	return res;
-}
+Cst ptr2cst(Ptr p) = newCst(ptr2cst(p.lhs), ptr2cst(p.rhs));
 
-CstLHS ptr2cst(PtrLHS p)
-{
-	CstLHS res = (CstLHS)`g x`;
-	res.f = ptr2cst(p.f);
-	res.args = ptr2cst(p.args);
-	return res;
-}
+CstLHS ptr2cst(PtrLHS p) = newCstLHS(ptr2cst(p.f), ptr2cst(p.args));
 
-CstRHS ptr2cst(PtrRHS p)
-{
-	CstRHS res = (CstRHS)`z`;
-	res.rhs = ptr2cst(p.rhs);
-	return res;
-}
+CstRHS ptr2cst(PtrRHS p) = newCstRHS(ptr2cst(p.rhs)); 
 
-CstNameArgs ptr2cst(PtrNameArgs p)
-{
-	//CstNameArgs res = (CstNameArgs)`z`;
-	// cheating
-	return parse(#CstNameArgs,"<p>");
-}
+CstNameArgs ptr2cst(PtrNameArgs p) = newCstNameArgs( [ptr2cst(n) | PtrName n <- p.ns] );
 
-CstExpr ptr2cst((PtrExpr)`<PtrAtom a>`)
-{
-	CstExpr res = (CstExpr)`1`;
-	res.a = ptr2cst(a);
-	return res;
-}
+CstExpr ptr2cst((PtrExpr)`<PtrAtom a>`) = newCstExpr(ptr2cst(a)); 
+CstExpr ptr2cst((PtrExpr)`<PtrExpr l><WS* _>*<WS* _><PtrExpr r>`) = newCstExpr(ptr2cst(l), "*", ptr2cst(r));
+CstExpr ptr2cst((PtrExpr)`<PtrExpr l><WS* _>+<WS* _><PtrExpr r>`) = newCstExpr(ptr2cst(l), "+", ptr2cst(r));
 
-CstExpr ptr2cst((PtrExpr)`<PtrExpr l><WS* _>*<WS* _><PtrExpr r>`)
-{
-	CstExpr res = (CstExpr)`1*1`;
-	res.l = ptr2cst(p.l);
-	res.r = ptr2cst(p.r);
-	return res;
-}
+CstAtom ptr2cst((PtrAtom)`<PtrName n>`) = newCstAtom(ptr2cst(n));
+CstAtom ptr2cst((PtrAtom)`<PtrNumber n>`) = newCstAtom(ptr2cst(n));
 
-CstExpr ptr2cst((PtrExpr)`<PtrExpr l><WS* _>+<WS* _><PtrExpr r>`)
-{
-	CstExpr res = (CstExpr)`1+1`;
-	res.l = ptr2cst(l);
-	res.r = ptr2cst(r);
-	return res;
-}
-
-CstAtom ptr2cst((PtrAtom)`<PtrName n>`)
-{
-	CstAtom res = (CstAtom)`x`;
-	res.name = ptr2cst(n);
-	return res;
-}
-
-CstAtom ptr2cst((PtrAtom)`<PtrNumber n>`)
-{
-	CstAtom res = (CstAtom)`1`;
-	res.number = ptr2cst(n);
-	return res;
-}
-
-// cheating, but not really
-CstName ptr2cst(PtrName n) = parse(#CstName,"<n>");
-CstNumber ptr2cst(PtrNumber n) = parse(#CstNumber,"<n>");
+CstName ptr2cst(PtrName n) = newCstName("<n>"); 
+CstNumber ptr2cst(PtrNumber n) = newCstNumber("<n>");
 
 test bool vptr2cst1() = ptr2cst(types::Ptr::example) == types::Cst::example;
