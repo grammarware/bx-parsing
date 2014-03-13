@@ -1,17 +1,18 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	This code is readable and concise even without using a separate library
+	(compared to the Ptr to Cst mapping). The reason is that this mapping (implosion)
+	is expected to be done by a human, so the language workbench provides as much support
+	as possible.
+	On the other hand, cleaning up a parse tree of layout info and ambiguities is better done
+	automatically, so manual ways are unhandy.
+}
 module mappings::Cst2Ast
 
 import String;
 import types::Cst;
 import types::Ast;
 
-@doc{
-	Notice how much more readable and concise this code is compared to the Ptr to Cst mapping.
-	The reason is that this mapping (implosion) is expected to be done by a human, so
-	the language workbench provides as much support as possible.
-	On the other hand, cleaning up a parse tree of layout info and ambiguities is better done
-	automatically, so manual ways are unhandy.
-}
 Ast cst2ast((Cst)`<CstLHS lhs>=<CstRHS rhs>;`)
 	= astfundef("<lhs.f>", cst2ast(lhs.args), cst2ast(rhs.rhs));
 

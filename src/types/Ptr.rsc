@@ -41,6 +41,7 @@ public bool validate(Ptr p) = /amb(_) !:= p;
 public void visualise(Ptr p) = renderParsetree(p);
 
 Ptr example = parse(#Ptr,"f arg = arg +1;");
+Ptr defexample = parse(#Ptr,"f arg = arg + 1 ;");
 
 test bool vptr1() = validate(example);
 
