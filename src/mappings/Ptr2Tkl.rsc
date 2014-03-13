@@ -1,4 +1,10 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	The Ptr to Tkl mapping is a form of limited unparsing: we retain the information about tokens and whitespace,
+	but drop the hierarchical details.
+	This is done independently of a language definition: we just produce one token for each preterminal
+	(a nonterminal defined with a lexical production rule, in Rascal terms).
+}
 module mappings::Ptr2Tkl
 
 import ParseTree;
