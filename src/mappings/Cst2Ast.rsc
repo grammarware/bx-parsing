@@ -15,7 +15,7 @@ import types::Ast;
 Ast cst2ast((Cst)`<CstLHS lhs>=<CstRHS rhs>;`)
 	= astfundef("<lhs.f>", cst2ast(lhs.args), cst2ast(rhs.rhs));
 
-AstArgs cst2ast((CstNameArgs)`<{CstName WS*}+ ns>`) = ["<a>" | /CstName a <- ns];
+AstArgs cst2ast((CstNameArgs)`<CstName+ ns>`) = ["<a>" | /CstName a <- ns];
 
 AstExpr cst2ast((CstExpr)`<CstAtom a>`)
 {

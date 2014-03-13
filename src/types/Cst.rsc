@@ -23,7 +23,7 @@ lexical WS = [\ \t\n\r];
 start syntax Cst = CstLHS lhs "=" CstRHS rhs ";";
 syntax CstLHS = CstName f CstNameArgs args;
 syntax CstRHS = CstExpr rhs;
-syntax CstNameArgs = {CstName WS*}+;
+syntax CstNameArgs = CstName+;
 syntax CstExpr
 	= CstAtom a
 	> left CstExpr l "*" CstExpr r

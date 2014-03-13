@@ -38,7 +38,7 @@ CstRHS ptr2cst(PtrRHS p)
 
 CstNameArgs ptr2cst(PtrNameArgs p)
 {
-	CstNameArgs res = (CstNameArgs)`z`;
+	//CstNameArgs res = (CstNameArgs)`z`;
 	// cheating
 	return parse(#CstNameArgs,"<p>");
 }
