@@ -26,7 +26,7 @@ public PtrExpr newPtrExpr(PtrAtom a) = parse(#PtrExpr,"<a>");
 public PtrExpr newPtrExpr(PtrExpr l, str ws1, "*", str ws2, PtrExpr r) = parse(#PtrExpr,"<l><ws1>*<ws2><r>");
 public PtrExpr newPtrExpr(PtrExpr l, str ws1, "+", str ws2, PtrExpr r) = parse(#PtrExpr,"<l><ws1>+<ws2><r>");
 
-public PtrNameArgs newPtrNameArgs(list[tuple[PtrName,str]] ns) = parse(#PtrNameArgs, trim(intercalate("",["<n><ws>" | <PtrName n, str ws> <- ns])));
+public PtrNameArgs newPtrNameArgs(lrel[PtrName,str] ns) = parse(#PtrNameArgs, trim(intercalate("",["<n><ws>" | <PtrName n, str ws> <- ns])));
 
 public PtrRHS newPtrRHS(PtrExpr rhs) = parse(#PtrRHS,"<rhs>");
 

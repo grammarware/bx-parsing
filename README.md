@@ -17,7 +17,7 @@ This repository contains the source code of the case study demonstrating our bid
 * recognising
 * ...
 
-There is approximately **1500** lines of code committed to this repository. To run all this code, you will need the [Rascal](http://www.rascal-mpl.org/start/) language workbench. The repository contains specifications of:
+There is approximately **1500** lines of code and comments committed to this repository. To run all this code, you will need the [Rascal](http://www.rascal-mpl.org/start/) language workbench. The repository contains specifications of:
 
  | Textual | Structured | Graphical
 |:----- |:-----:|:-----:|:-----:|
