@@ -22,6 +22,8 @@ import visualise::Tok;
 import visualise::Lex;
 
 import visualise::Ptr;
+import visualise::Cst;
+import visualise::Ast;
 
 import vis::Render;
 import vis::Figure;
@@ -38,6 +40,6 @@ void main()
 	
 	//renderSave(forcegrow(visualised(types::Str::example)), |home:///projects/acceptware/parsing/generated/str.png|);
 	renderSave(forcegrow(visualised(types::Ptr::example)), |home:///projects/acceptware/parsing/generated/Ptr.png|);
-	//renderSave(forcegrow(visualised(types::Str::example)), |home:///projects/acceptware/parsing/generated/str.png|);
-	//renderSave(forcegrow(visualised(types::Str::example)), |home:///projects/acceptware/parsing/generated/str.png|);
+	renderSave(forcegrow(visualised(types::Cst::example)), |home:///projects/acceptware/parsing/generated/Cst.png|);
+	renderSave(forcegrow(visualised(types::Ast::example)), |home:///projects/acceptware/parsing/generated/Ast.png|);
 }

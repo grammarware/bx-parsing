@@ -24,8 +24,15 @@ data AstExpr
 	;
 alias AstNumber = int;
 
-Ast example = astfundef("f",["arg"],
-				astbplus(astvariable("arg"),astliteral(1)));
+Ast example = astfundef("f",["arg"], astbplus(astvariable("arg"),astliteral(1)));
+Ast tricky = astfundef("f",["x","y"], 
+astbplus(
+	astbmul(astvariable("x"),astvariable("y")),
+	astbplus(
+		astvariable("x"),
+		astbmul(astvariable("y"), astliteral(5))
+		))
+);
 
 @doc{Minimal static checking: all used variables must be listed among arguments. Also, variable names cannot be empty.}
 public bool validate(Ast a)
