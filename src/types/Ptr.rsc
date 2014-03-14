@@ -43,6 +43,7 @@ public void visualise(Ptr p) = renderParsetree(p);
 Ptr example = parse(#Ptr,"f arg = arg +1;");
 Ptr defexample = parse(#Ptr,"f arg = arg + 1 ;");
 Ptr tricky = parse(#Ptr,"f arg = 1+2*2+1;");
+Ptr multi = parse(#Ptr,"add x y = x+y ;");
 
 test bool vptr1() = validate(example);
 test bool vptr2() = validate(defexample);
