@@ -1,4 +1,7 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	TBD
+}
 module mappings::Lex2Tok
 
 import List;

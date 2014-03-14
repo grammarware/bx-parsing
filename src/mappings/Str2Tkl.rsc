@@ -1,10 +1,4 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
-module mappings::Str2Tkl
-
-import String;
-import types::Str;
-import types::Tkl;
-
 @doc{
  DFA (deterministic final automaton) is used to tokenise the example.
  The knowledge about structure is hard-coded to it.
@@ -12,7 +6,13 @@ import types::Tkl;
  but makes a token boundary when letters change to digits and vice versa.
  It also treats nonalphanumeric symbols individually, which is unacceptable for language
  with tokens like == or ->
-} 
+}
+module mappings::Str2Tkl
+
+import String;
+import types::Str;
+import types::Tkl;
+
 public Tkl str2tkl(Str p)
 {
 	 //1 - alpha, 2 - num, 3 - whitespace, 4 - smth

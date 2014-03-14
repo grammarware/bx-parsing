@@ -1,14 +1,14 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	For the Tok to Tkl mapping we add exactly one space between all tokens.
+	This is very primitive pretty-printing.
+}
 module mappings::Tok2Tkl
 
 import List;
 import types::Tok;
 import types::Tkl;
 
-@doc{
-	We add exactly one space between all tokens.
-	This is very primitive pretty-printing.
-}
 public Tkl tok2tkl([]) = [];
 public Tkl tok2tkl(Tok p)
 	= p[0]
