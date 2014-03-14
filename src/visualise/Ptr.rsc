@@ -1,6 +1,5 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 module visualise::Ptr
-//module visualise::Lex
 
 import ParseTree;
 import types::Ptr;
@@ -34,7 +33,7 @@ public list[Figure] visParsetree(Tree t)
 			{
 				ts = [*visParsetree(c) | appl(Production p2, list[Tree] as2) <- args, c <- as2];
 				if (isEmpty(ts))
-					return [box(size(5),fillColor("grey"))];
+					return [];
 				else
 					return [tree(box(text("Layout"),size(5)), ts)];
 			}
