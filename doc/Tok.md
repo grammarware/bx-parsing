@@ -1,4 +1,4 @@
-## Tok
+## [Tok](https://github.com/grammarware/bx-parsing/blob/master/src/types/Tok.rsc)
 
 Tok models a program as a list of its tokens, disregarding layout information (whitespace,
 indentation, comments, line numbers, etc). A definition of a token can vary, in our case

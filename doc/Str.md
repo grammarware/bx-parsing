@@ -1,4 +1,4 @@
-## Str
+## [Str](https://github.com/grammarware/bx-parsing/blob/master/src/types/Str.rsc)
 
 Str is a string, the simplest possible representation of a textual program.
 

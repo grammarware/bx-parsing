@@ -1,4 +1,4 @@
-## Tkl
+## [Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/types/Tkl.rsc)
 
 Tkl models a program as a list of its tokens. A definition of a token can vary, in our case
 study we consider alphabetical and numerical literals to be treated as separate tokens

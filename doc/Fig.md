@@ -1,4 +1,4 @@
-## Fig
+## [Fig](https://github.com/grammarware/bx-parsing/blob/master/src/types/Fig.rsc)
 
 Fig is the highest level model in the graphical representation world. It abstracts away from
 details like position, colour and form, and focuses on the concepts.

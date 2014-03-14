@@ -1,5 +1,5 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
-module visualise::Fig
+module specific::Fig
 
 import types::Fig;
 import vis::Figure;

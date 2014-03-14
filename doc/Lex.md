@@ -1,4 +1,4 @@
-## Lex
+## [Lex](https://github.com/grammarware/bx-parsing/blob/master/src/types/Lex.rsc)
 
 Lex is the highest level model of a program that is obtained without examining its entire
 structure. Usually methods that rely on Lex, are more tolerant to deviations in their input,

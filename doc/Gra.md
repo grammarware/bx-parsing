@@ -1,4 +1,4 @@
-## Gra
+## [Gra](https://github.com/grammarware/bx-parsing/blob/master/src/types/Gra.rsc)
 
 Gra is a metamodel-specific model of a picture, usually in the form of a diagram with
 entities and relationships, perhaps of different kinds.

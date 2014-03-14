@@ -26,6 +26,9 @@ import visualise::Ptr;
 import visualise::Cst;
 import visualise::Ast;
 
+import visualise::Pic;
+import visualise::Dra;
+import visualise::Gra;
 import visualise::Fig;
 
 import vis::Render;
@@ -46,6 +49,9 @@ void renderto(loc base)
 	renderSave(forcegrow(visualised(types::Cst::example)), base+"Cst.png");
 	renderSave(forcegrow(visualised(types::Ast::example)), base+"Ast.png");
 	
+	renderSave(forcegrow(visualised(types::Pic::example)), base+"Pic.png");
+	renderSave(forcegrow(visualised(types::Dra::example)), base+"Dra.png");
+	renderSave(forcegrow(visualised(types::Gra::example)), base+"Gra.png");
 	renderSave(forcegrow(visualised(types::Fig::example)), base+"Fig.png");
 }
 

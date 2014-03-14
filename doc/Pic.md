@@ -1,4 +1,4 @@
-## Pic
+## [Pic](https://github.com/grammarware/bx-parsing/blob/master/src/types/Pic.rsc)
 
 In order to use Rascal facilities, we represent graphical models as text with indentations
 and fancy formatting, it is fairly easy to write a mapping between this form and a graphical

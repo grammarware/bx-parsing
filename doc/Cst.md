@@ -1,4 +1,4 @@
-## Cst
+## [Cst](https://github.com/grammarware/bx-parsing/blob/master/src/types/Cst.rsc)
 
 Cst is a concrete syntax tree, which means it unambiguously defines the program
 in a form very close to the syntax used by programmers or any other language users.

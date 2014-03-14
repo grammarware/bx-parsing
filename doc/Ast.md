@@ -1,4 +1,4 @@
-## Ast
+## [Ast](https://github.com/grammarware/bx-parsing/blob/master/src/types/Ast.rsc)
 
 We consider Ast to be on the highest level of the structured data.
 Usually at this level one finds abstract syntax definitions, language syntaxes

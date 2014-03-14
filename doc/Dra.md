@@ -1,4 +1,4 @@
-## Dra
+## [Dra](https://github.com/grammarware/bx-parsing/blob/master/src/types/Dra.rsc)
 
 Dra is a low level drawing specification in terms of displayed entities and their
 coordinates. Since in the case study we opted for "textual graphics", the coordinates

@@ -5,23 +5,6 @@ import types::Gra;
 import vis::Figure;
 import vis::Render;
 
-//data Gra = gramodel(GraElement root);
-//data GraElement
-//	= graempty()
-//	| graarrow()
-//	| grabox(GraType t, GraLabel label)
-//	| graprefix(GraElement e1, GraElement e2)
-//	| grapostfix(GraElement e1, GraElement e2)
-//	| grainfix(GraElement e1, list[GraElement] es2)
-//	| graconfix(GraType t, GraElement e)
-//	;
-//data GraType
-//	= grasquare()
-//	| graround()
-//	| gracurly()
-//	;
-//alias GraLabel = str;
-
 Figure visualised(Gra p) = tree(box(text("GraphModel")),[mapgrael(p.root)], resizable(false), std(font("Monaco")), std(gap(5)), gap(20) );
 
 Figure mapgrael(graempty()) = ellipse(size(5));
@@ -39,5 +22,3 @@ Figure mapgratype(gracurly()) = ellipse(text("{}"), fillColor("yellow"));
 public void visualise(Gra p) = render(visualised(p));
 
 void visgra1() = visualise(types::Gra::example);
-
-
