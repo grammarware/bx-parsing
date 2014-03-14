@@ -29,7 +29,7 @@ void main()
 		name = replaceLast(z.file,".rsc","");
 		println(z.file);
 		<docs,code> = slicesrc(readFile(z));
-		writeFile(|project://bx-parsing/doc/<name>.md|,"## <name>
+		writeFile(|project://bx-parsing/doc/<name>.md|,"## [<name>](https://github.com/grammarware/bx-parsing/blob/master/src/types/<name>.rsc)
 		'
 		'<docs>
 		'
