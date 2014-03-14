@@ -16,7 +16,6 @@
 module types::Cst
 
 import ParseTree;
-import vis::ParseTree;
 
 layout L = WS*;
 lexical WS = [\ \t\n\r];
@@ -37,12 +36,9 @@ lexical CstName = [a-z]+ !>> [a-z];
 lexical CstNumber = [0-9]+ !>> [0-9];
 
 Cst example = parse(#start[Cst],"f arg = arg +1;").top;
+Cst tricky = parse(#start[Cst],"f arg = 1+2*2+1;").top;
 
 public bool validate(Cst p) = /amb(_) !:= p;
 
-public void visualise(Cst p) = renderParsetree(p);
-
 test bool vCst1() = validate(example);
-
-void visCst1() = visualise(parse(#start[Cst],"f arg = arg +1;").top);
-void visCst2() = visualise(parse(#start[Cst],"f arg = 1+2*2+1;").top);
+test bool vCst2() = validate(tricky);
