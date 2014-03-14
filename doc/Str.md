@@ -18,3 +18,10 @@ test bool vstr1() = validate(example);
 test bool vstr2() = validate(defexample);
 ```
 
+### See also:
+* [mappings::For2Str](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/For2Str.rsc)
+* [mappings::Str2For](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Str2For.rsc)
+* [mappings::Str2Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Str2Tkl.rsc)
+* [mappings::Tkl2Str](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Tkl2Str.rsc)
+* [visualise::Str](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Str.rsc)
+* [specific::Str2Lex](https://github.com/grammarware/bx-parsing/blob/master/src/specific/Str2Lex.rsc)

@@ -12,13 +12,17 @@ module types::Pic
 
 alias Pic = str;
 
-Pic example = 	"{f}
-				'	(
-				'		[arg]
-				'	→
-				'		{+}
-				'			[arg]
-				'			(1)
-				'	)";
+Pic example =     "{f}
+                '    (
+                '        [arg]
+                '    →
+                '        {+}
+                '            [arg]
+                '            (1)
+                '    )";
 ```
 
+### See also:
+* [mappings::Dra2Pic](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Dra2Pic.rsc)
+* [visualise::Pic](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Pic.rsc)
+* [specific::Gra2Pic](https://github.com/grammarware/bx-parsing/blob/master/src/specific/Gra2Pic.rsc)

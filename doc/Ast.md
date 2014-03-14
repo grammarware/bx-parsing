@@ -20,30 +20,38 @@ alias AstName = str;
 alias AstArgs = list[AstArg];
 alias AstArg = str;
 data AstExpr
-	= astvariable(AstName name)
-	| astliteral(AstNumber number)
-	| astbplus(AstExpr left, AstExpr right)
-	| astbmul(AstExpr left, AstExpr right)
-	;
+    = astvariable(AstName name)
+    | astliteral(AstNumber number)
+    | astbplus(AstExpr left, AstExpr right)
+    | astbmul(AstExpr left, AstExpr right)
+    ;
 alias AstNumber = int;
 
 Ast example = astfundef("f",["arg"], astbplus(astvariable("arg"),astliteral(1)));
 Ast tricky = astfundef("f",["x","y"], 
 astbplus(
-	astbmul(astvariable("x"),astvariable("y")),
-	astbplus(
-		astvariable("x"),
-		astbmul(astvariable("y"), astliteral(5))
-		))
+    astbmul(astvariable("x"),astvariable("y")),
+    astbplus(
+        astvariable("x"),
+        astbmul(astvariable("y"), astliteral(5))
+        ))
 );
 
 @doc{Minimal static checking: all used variables must be listed among arguments. Also, variable names cannot be empty.}
 public bool validate(Ast a)
-	= (true | it && !isEmpty(n) && (n in a.args) | /astvariable(AstName n) <- a)
-	;
+    = (true | it && !isEmpty(n) && (n in a.args) | /astvariable(AstName n) <- a)
+    ;
 
 test bool vast1() = validate(example);
 test bool vast2() = !validate(astfundef("f",["arg"],astbplus(astvariable(""),astliteral(1))));
 test bool vast3() = !validate(astfundef("f",["arg"],astbplus(astvariable("x"),astliteral(1))));
 ```
 
+### See also:
+* [mappings::Ast2Cst](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ast2Cst.rsc)
+* [mappings::Ast2Fig](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ast2Fig.rsc)
+* [mappings::Ast2Lex](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ast2Lex.rsc)
+* [mappings::Cst2Ast](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Cst2Ast.rsc)
+* [mappings::Fig2Ast](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Fig2Ast.rsc)
+* [mappings::Lex2Ast](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Lex2Ast.rsc)
+* [visualise::Ast](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Ast.rsc)

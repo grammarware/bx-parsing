@@ -28,14 +28,14 @@ lexical PtrLHS = PtrName f WS* PtrNameArgs args;
 lexical PtrRHS = PtrExpr rhs;
 lexical PtrNameArgs = {PtrName WS*}+ ns;
 lexical PtrExpr
-	= PtrAtom a
-	> left PtrExpr l WS* "*" WS* PtrExpr r
-	> left PtrExpr l WS* "+" WS* PtrExpr r
-	;
+    = PtrAtom a
+    > left PtrExpr l WS* "*" WS* PtrExpr r
+    > left PtrExpr l WS* "+" WS* PtrExpr r
+    ;
 lexical PtrAtom
-	= PtrName name
-	| PtrNumber number
-	;
+    = PtrName name
+    | PtrNumber number
+    ;
 lexical PtrName = [a-z]+ !>> [a-z];
 lexical PtrNumber = [0-9]+ !>> [0-9];
 
@@ -56,3 +56,10 @@ void visptr1() = visualise(example);
 void visptr2() = visualise(tricky);
 ```
 
+### See also:
+* [mappings::Cst2Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Cst2Ptr.rsc)
+* [mappings::For2Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/For2Ptr.rsc)
+* [mappings::Ptr2Cst](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ptr2Cst.rsc)
+* [mappings::Ptr2Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ptr2Tkl.rsc)
+* [visualise::Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Ptr.rsc)
+* [specific::Ptr2Tok](https://github.com/grammarware/bx-parsing/blob/master/src/specific/Ptr2Tok.rsc)

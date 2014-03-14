@@ -27,14 +27,14 @@ syntax CstLHS = CstName f CstNameArgs args;
 syntax CstRHS = CstExpr rhs;
 syntax CstNameArgs = CstName+;
 syntax CstExpr
-	= CstAtom a
-	> left CstExpr l "*" CstExpr r
-	> left CstExpr l "+" CstExpr r
-	;
+    = CstAtom a
+    > left CstExpr l "*" CstExpr r
+    > left CstExpr l "+" CstExpr r
+    ;
 syntax CstAtom
-	= CstName name
-	| CstNumber number
-	;
+    = CstName name
+    | CstNumber number
+    ;
 lexical CstName = [a-z]+ !>> [a-z];
 lexical CstNumber = [0-9]+ !>> [0-9];
 
@@ -47,3 +47,12 @@ test bool vCst1() = validate(example);
 test bool vCst2() = validate(tricky);
 ```
 
+### See also:
+* [mappings::Ast2Cst](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ast2Cst.rsc)
+* [mappings::Cst2Ast](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Cst2Ast.rsc)
+* [mappings::Cst2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Cst2Gra.rsc)
+* [mappings::Cst2Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Cst2Ptr.rsc)
+* [mappings::Cst2Tok](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Cst2Tok.rsc)
+* [mappings::Gra2Cst](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Gra2Cst.rsc)
+* [mappings::Ptr2Cst](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ptr2Cst.rsc)
+* [visualise::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Cst.rsc)

@@ -33,3 +33,10 @@ test bool vtkl2() = !validate(["f"," ","arg"," ","="," ","arg"," ","+","","1",";
 test bool vtkl3() =  validate(defexample);
 ```
 
+### See also:
+* [mappings::Ptr2Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ptr2Tkl.rsc)
+* [mappings::Str2Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Str2Tkl.rsc)
+* [mappings::Tkl2Str](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Tkl2Str.rsc)
+* [mappings::Tkl2Tok](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Tkl2Tok.rsc)
+* [mappings::Tok2Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Tok2Tkl.rsc)
+* [visualise::Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Tkl.rsc)

@@ -27,14 +27,14 @@ syntax ForLHS = ForName f WS* ForNameArgs args;
 syntax ForRHS = ForExpr rhs;
 lexical ForNameArgs = {ForName WS*}+;
 syntax ForExpr
-	= ForAtom
-	| ForExpr WS* "*" WS* ForExpr
-	| ForExpr WS* "+" WS* ForExpr
-	;
+    = ForAtom
+    | ForExpr WS* "*" WS* ForExpr
+    | ForExpr WS* "+" WS* ForExpr
+    ;
 syntax ForAtom
-	= ForName
-	| ForNumber
-	;
+    = ForName
+    | ForNumber
+    ;
 lexical ForName = [a-z]+;
 lexical ForNumber = [0-9]+;
 
@@ -56,3 +56,8 @@ void visfor2() = visualise(parse(#For, tricky));
 void visfor3() = visualise(parse(#For,"f arg = 1;")); // Rascal does not draw lexical ambiguities :(
 ```
 
+### See also:
+* [mappings::For2Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/For2Ptr.rsc)
+* [mappings::For2Str](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/For2Str.rsc)
+* [mappings::Str2For](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Str2For.rsc)
+* [visualise::For](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/For.rsc)

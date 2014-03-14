@@ -19,15 +19,15 @@ module types::Lex
 import List;
 
 data TokToken
-	= numeric(int n)
-	| alphanumeric(str a)
-	| ssymbol(str s)
-	;
+    = numeric(int n)
+    | alphanumeric(str a)
+    | ssymbol(str s)
+    ;
 data Lex = lexfundef(list[TokToken] left, list[TokToken] right);
 
 Lex example = lexfundef(
-				[alphanumeric("f"),alphanumeric("arg")],
-				[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]);
+                [alphanumeric("f"),alphanumeric("arg")],
+                [alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]);
 
 bool isTokToken(numeric(int n)) = true;
 bool isTokToken(alphanumeric(str a)) = /[a-z0-9]+/ := a;
@@ -37,20 +37,27 @@ default bool isTokToken(TokToken t) = false;
 bool isTokTokens(list[TokToken] ts) = (true | it && isTokToken(t) | t <- ts); 
 
 public bool validate(Lex ls)
-	= isTokTokens(ls.left)
-	&& size(ls.left) == 2
-	&& isTokTokens(ls.right)
-	;
+    = isTokTokens(ls.left)
+    && size(ls.left) == 2
+    && isTokTokens(ls.right)
+    ;
 
 test bool vlex1() = validate(example);
 test bool vlex2() = !validate(lexfundef(
-						[alphanumeric("f")],
-						[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
+                        [alphanumeric("f")],
+                        [alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
 test bool vlex3() = !validate(lexfundef(
-						[alphanumeric("f"),alphanumeric("!")],
-						[alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
+                        [alphanumeric("f"),alphanumeric("!")],
+                        [alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
 test bool vlex4() = !validate(lexfundef(
-						[alphanumeric("f"),alphanumeric("arg")],
-						[alphanumeric("arg"),ssymbol("plus"),numeric(1),ssymbol(";")]));
+                        [alphanumeric("f"),alphanumeric("arg")],
+                        [alphanumeric("arg"),ssymbol("plus"),numeric(1),ssymbol(";")]));
 ```
 
+### See also:
+* [mappings::Ast2Lex](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ast2Lex.rsc)
+* [mappings::Lex2Ast](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Lex2Ast.rsc)
+* [mappings::Lex2Tok](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Lex2Tok.rsc)
+* [mappings::Tok2Lex](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Tok2Lex.rsc)
+* [visualise::Lex](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Lex.rsc)
+* [specific::Str2Lex](https://github.com/grammarware/bx-parsing/blob/master/src/specific/Str2Lex.rsc)
