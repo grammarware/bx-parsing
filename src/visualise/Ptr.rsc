@@ -47,7 +47,8 @@ public list[Figure] visParsetree(Tree t)
 	}
 }
 
-public void visualise(Ptr p) = render(space(visParsetree(p)[0], std(gap(10)), std(font("Monaco")), std(resizable(false))));
+public void visualise(Ptr p) = render(visualised(p));
+public Figure visualised(Ptr p) = space(visParsetree(p)[0], std(gap(10)), std(font("Monaco")), std(resizable(false)));
 
 void visptr1() = visualise(types::Ptr::example);
 void visptr2() = visualise(types::Ptr::defexample);
