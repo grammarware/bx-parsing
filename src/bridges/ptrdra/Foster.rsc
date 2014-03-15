@@ -30,20 +30,17 @@ Ptr putback(Dra R, Ptr L) throws PutBackException
 	return putbacktt(L,newL);
 }
 
-//Ast putbackff(Ast main, Ast updated)
 Ptr putbacktt(
 	(Ptr main)`<PtrLHS lhs1><WS* ws1>=<WS* ws2><PtrRHS rhs1><WS* ws3>;`,
 	(Ptr updd)`<PtrLHS lhs2><WS*   _>=<WS*   _><PtrRHS rhs2><WS*   _>;`
-	) throws PutBackException
-	= newPtr(putbacktt(lhs1,lhs2), unparse(ws1), unparse(ws2), newPtrRHS(putbacktt(rhs1.rhs,rhs2.rhs)), unparse(ws3));
+) = newPtr(putbacktt(lhs1,lhs2), unparse(ws1), unparse(ws2), newPtrRHS(putbacktt(rhs1.rhs,rhs2.rhs)), unparse(ws3));
 
 PtrLHS putbacktt(
 	(PtrLHS main)`<PtrName _><WS* ws><PtrNameArgs args1>`,
 	(PtrLHS updd)`<PtrName f><WS*  _><PtrNameArgs args2>`
-	) throws PutBackException
-	= newPtrLHS(f, unparse(ws), putbacktt(args1,args2));
+) = newPtrLHS(f, unparse(ws), putbacktt(args1,args2));
 
-PtrNameArgs putbacktt(PtrNameArgs main, PtrNameArgs updd) throws PutBackException
+PtrNameArgs putbacktt(PtrNameArgs main, PtrNameArgs updd)
 {
 	list[PtrName] names = [n | /PtrName n := updd.ns];
 	list[str] wss = [unparse(ws) | /WS ws := main.ns];
@@ -80,7 +77,7 @@ test bool pfoster1()
 }
 
 test bool vfoster2() = putback(types::Dra::example,types::Ptr::example) == types::Ptr::example;
-test bool pfoster3()
+test bool pfoster2()
 {
 	println(types::Ptr::example);
 	println(putback(types::Dra::example,types::Ptr::example));
