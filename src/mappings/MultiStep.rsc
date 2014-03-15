@@ -29,6 +29,8 @@ import mappings::Tkl2Str;
 import mappings::Tkl2Tok;
 import mappings::Tok2Lex;
 import mappings::Tok2Tkl;
+import mappings::Dra2Gra;
+import mappings::Gra2Fig;
 import types::Str;
 import types::Tkl;
 import types::Tok;
@@ -84,5 +86,8 @@ test bool vfig2pic1() = fig2pic(types::Fig::example) == types::Pic::example;
 
 public Dra fig2dra(Fig p) = gra2dra(fig2gra(p));
 test bool vfig2dra1() = dra2pic(fig2dra(types::Fig::example)) == dra2pic(types::Dra::example);
+
+public Fig dra2fig(Dra p) = gra2fig(dra2gra(p));
+test bool vdra2fig1() = dra2fig(types::Dra::example) == types::Fig::example;
 
 //def f(x,y,z): print 'public %s %s2%s(%s p) = %s2%s(%s2%s(p));\ntest bool v%s2%s1() = %s2%s(types::%s::example) == types::%s::example;' % (z, x.lower(),z.lower(),x, y.lower(),z.lower(),x.lower(),y.lower(), x.lower(),z.lower(), x.lower(),z.lower(), x,z)
