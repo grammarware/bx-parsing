@@ -1,8 +1,7 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
 	We implicitly reuse the Rascal definition of whitespace by using the library function
-	trim()
-	http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/String/trim/trim.html
+	[trim()](http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/String/trim/trim.html).
 }
 module mappings::Tkl2Tok
 

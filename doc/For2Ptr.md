@@ -21,7 +21,6 @@ import lib::PtrFactory;
 import String;
 import Set;
 
-// NB: a workaround via Str since manual low-level disambiguation is too ugly in Rascal
 public Ptr for2ptr(For p) = mapfor(nondeterministicdisambiguation(p));
 
 For nondeterministicdisambiguation(For p) = innermost visit(p)

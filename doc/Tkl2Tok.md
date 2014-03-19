@@ -1,8 +1,7 @@
 ## [Tkl2Tok](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Tkl2Tok.rsc)
 
 We implicitly reuse the Rascal definition of whitespace by using the library function
-trim()
-http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/String/trim/trim.html
+[trim()](http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/String/trim/trim.html).
 
 ```
 module mappings::Tkl2Tok

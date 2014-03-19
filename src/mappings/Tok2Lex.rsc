@@ -1,6 +1,10 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
-	TBD
+	The main token mapping function is implemented with pattern-driven dispatch in Rascal.
+	The argument is tried by several regular expressions, and the function body corresponding to
+	the successfully matched definition is executed. If both regexp fail, a default case
+	(“special symbol” token) is executed. If there are no default cases, Rascal produces an error
+	in run time.
 }
 module mappings::Tok2Lex
 

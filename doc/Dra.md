@@ -41,4 +41,5 @@ test bool vdra1() = validate(example);
 * [mappings::Dra2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Dra2Gra.rsc)
 * [mappings::Dra2Pic](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Dra2Pic.rsc)
 * [mappings::Gra2Dra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Gra2Dra.rsc)
+* [mappings::Pic2Dra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Pic2Dra.rsc)
 * [visualise::Dra](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Dra.rsc)
