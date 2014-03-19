@@ -19,6 +19,14 @@ test bool vtok2tkl1() = tok2tkl(types::Tok::example) != types::Tkl::example;
 test bool vtok2tkl2() = tok2tkl(types::Tok::example) == types::Tkl::defexample;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Tok.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Tkl.png)
+
 ### See also:
 * [types::Tok](https://github.com/grammarware/bx-parsing/blob/master/src/types/Tok.rsc)
 * [visualise::Tok](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Tok.rsc)

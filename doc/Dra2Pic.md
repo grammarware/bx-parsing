@@ -37,6 +37,14 @@ default str bracketit(DraElement e) = "ERROR";
 test bool vdra2pic1() = dra2pic(types::Dra::example) == types::Pic::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Dra.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Pic.png)
+
 ### See also:
 * [types::Dra](https://github.com/grammarware/bx-parsing/blob/master/src/types/Dra.rsc)
 * [visualise::Dra](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Dra.rsc)

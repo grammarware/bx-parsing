@@ -37,6 +37,14 @@ GraElement mapatom((CstAtom)`<CstNumber number>`) = grabox(graround(),"<number>"
 test bool vcst2gra1() = cst2gra(types::Cst::example) == types::Gra::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Cst.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Gra.png)
+
 ### See also:
 * [types::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/types/Cst.rsc)
 * [visualise::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Cst.rsc)

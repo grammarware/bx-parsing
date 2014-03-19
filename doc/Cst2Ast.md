@@ -31,6 +31,14 @@ AstExpr cst2ast((CstAtom)`<CstNumber number>`) = astliteral(toInt("<number>"));
 test bool vcst2ast1() = cst2ast(types::Cst::example) == types::Ast::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Cst.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Ast.png)
+
 ### See also:
 * [types::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/types/Cst.rsc)
 * [visualise::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Cst.rsc)

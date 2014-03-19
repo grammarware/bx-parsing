@@ -40,6 +40,14 @@ test bool vstr2tkl1() = str2tkl(types::Str::example) == types::Tkl::example;
 test bool vstr2tkl2() = str2tkl("f xxx = 100;") == ["f"," ","xxx"," ","="," ","100",";"];
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Str.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Tkl.png)
+
 ### See also:
 * [types::Str](https://github.com/grammarware/bx-parsing/blob/master/src/types/Str.rsc)
 * [visualise::Str](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Str.rsc)

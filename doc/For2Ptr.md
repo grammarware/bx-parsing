@@ -107,6 +107,14 @@ test bool vfor2ptr1() = for2ptr(types::For::example) == types::Ptr::example;
 test bool vfor2ptr2() = for2ptr(types::For::tricky) == types::Ptr::tricky;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/For.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Ptr.png)
+
 ### See also:
 * [types::For](https://github.com/grammarware/bx-parsing/blob/master/src/types/For.rsc)
 * [visualise::For](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/For.rsc)

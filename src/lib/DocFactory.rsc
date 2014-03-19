@@ -20,15 +20,27 @@ tuple[str,str] slicesrc(str s)
 	return <intercalate("\n",docs), intercalate("\n",code)>;
 }
 
-str basic(str title, str doc, str pic, str code, list[str] end) = "## <title>
+str basic(str title, str dir, str doc, str pic, str code, str from, str to, list[str] end) =
+		//"## <title>
+		"## [<title>](https://github.com/grammarware/bx-parsing/blob/master/src/<dir>/<title>.rsc)
 		'
 		'<doc>
 		'
-		'<pic>```
+		'<if(pic!=""){><pic>
+		'
+		'<}>```
 		'<code>
 		'```
 		'
-		'### See also:
+		'### <if(from+to!=""){>Input
+		'
+		'![Input](https://github.com/grammarware/bx-parsing/raw/master/img/<from>.png)
+		'
+		'### Output
+		'
+		'![Output](https://github.com/grammarware/bx-parsing/raw/master/img/<to>.png)
+		'
+		'### <}>See also:
 		'<for(str s<-end){>* <s>
 		'<}>";
 
@@ -40,7 +52,7 @@ list[str] seealso2(str name, loc not) = getlinks(name,not,"types") + getlinks(na
 void main()
 {
 	println("Generating figures...");
-	lib::PNGFactory::renderto(|project://bx-parsing/img/|);
+	//lib::PNGFactory::renderto(|project://bx-parsing/img/|);
 	println("Generating documentation for types...");
 	writeFile(|project://bx-parsing/doc/README.md|,readFile(|project://bx-parsing/README.md|));
 	for (loc z <- |project://bx-parsing/src/types/|.ls)
@@ -48,22 +60,45 @@ void main()
 		name = norsc(z);
 		<docs,code> = slicesrc(readFile(z));
 		writeFile(|project://bx-parsing/doc/<name>.md|,basic(
-			"[<name>](https://github.com/grammarware/bx-parsing/blob/master/src/types/<name>.rsc)",
+			name,
+			"types",
 			docs,
-			"![Example](https://github.com/grammarware/bx-parsing/raw/master/img/<name>.png)\n\n",
+			"![Example](https://github.com/grammarware/bx-parsing/raw/master/img/<name>.png)",
 			code,
+			"",
+			"",
 			seealso1(name,z)));	
 	}
 	println("Generating documentation for mappings...");
-	for (loc z <- |project://bx-parsing/src/mappings/|.ls)
+	for (loc z <- |project://bx-parsing/src/mappings/|.ls, z.file!="MultiStep.rsc")
 	{
 		name = norsc(z);
 		<docs,code> = slicesrc(readFile(z));
+		parts = split("2",name);
 		writeFile(|project://bx-parsing/doc/<name>.md|,basic(
-			"[<name>](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/<name>.rsc)",
+			name,
+			"mappings",
 			docs,
 			"",
 			code,
-			[*seealso2(nm,z) | nm <- split("2",name)]));	
+			parts[0],
+			parts[1],
+			[*seealso2(nm,z) | nm <- parts]));	
+	}
+	println("Generating documentation for specific mappings...");
+	for (loc z <- |project://bx-parsing/src/specific/|.ls, contains(z.file,"2"))
+	{
+		name = norsc(z);
+		<docs,code> = slicesrc(readFile(z));
+		parts = split("2",name);
+		writeFile(|project://bx-parsing/doc/<name>.md|,basic(
+			name,
+			"specific",
+			docs,
+			"",
+			code,
+			parts[0],
+			parts[1],
+			[*seealso2(nm,z) | nm <- parts]));	
 	}
 }

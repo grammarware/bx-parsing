@@ -124,6 +124,14 @@ void qq()
 }
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Gra.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Dra.png)
+
 ### See also:
 * [types::Gra](https://github.com/grammarware/bx-parsing/blob/master/src/types/Gra.rsc)
 * [visualise::Gra](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Gra.rsc)

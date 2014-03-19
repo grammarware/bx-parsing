@@ -15,6 +15,14 @@ test bool vfor2str1() = for2str(types::For::example) == types::Str::example;
  
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/For.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Str.png)
+
 ### See also:
 * [types::For](https://github.com/grammarware/bx-parsing/blob/master/src/types/For.rsc)
 * [visualise::For](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/For.rsc)

@@ -36,6 +36,14 @@ GraElement mapexpr(figbinary(FigName op, FigExpr left, FigExpr right))
 test bool vfig2gra1() = fig2gra(types::Fig::example) == types::Gra::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Fig.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Gra.png)
+
 ### See also:
 * [types::Fig](https://github.com/grammarware/bx-parsing/blob/master/src/types/Fig.rsc)
 * [visualise::Fig](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Fig.rsc)

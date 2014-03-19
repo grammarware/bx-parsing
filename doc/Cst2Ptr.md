@@ -35,6 +35,14 @@ PtrAtom cst2ptr((CstAtom)`<CstNumber number>`) = newPtrAtom(newPtrNumber("<numbe
 test bool vcst2ptr1() = cst2ptr(types::Cst::example) == types::Ptr::defexample;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Cst.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Ptr.png)
+
 ### See also:
 * [types::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/types/Cst.rsc)
 * [visualise::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Cst.rsc)

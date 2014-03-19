@@ -32,5 +32,6 @@ test bool tfig1() = validate(example);
 * [mappings::Ast2Fig](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Ast2Fig.rsc)
 * [mappings::Fig2Ast](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Fig2Ast.rsc)
 * [mappings::Fig2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Fig2Gra.rsc)
+* [mappings::Gra2Fig](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Gra2Fig.rsc)
 * [visualise::Fig](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Fig.rsc)
 * [specific::Fig](https://github.com/grammarware/bx-parsing/blob/master/src/specific/Fig.rsc)

@@ -17,6 +17,14 @@ test bool vtkl2tok1() = tkl2tok(types::Tkl::example) == types::Tok::example;
 test bool vtkl2tok2() = tkl2tok(["f","\n","xxx"," ","=","\t\r\n\t","100",";"]) == ["f","xxx","=","100",";"];
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Tkl.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Tok.png)
+
 ### See also:
 * [types::Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/types/Tkl.rsc)
 * [visualise::Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Tkl.rsc)

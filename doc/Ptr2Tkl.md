@@ -27,6 +27,14 @@ public Tkl ptr2tkl(Ptr p)
 test bool vptr2tkl1() = ptr2tkl(types::Ptr::example) == types::Tkl::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Ptr.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Tkl.png)
+
 ### See also:
 * [types::Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/types/Ptr.rsc)
 * [visualise::Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Ptr.rsc)

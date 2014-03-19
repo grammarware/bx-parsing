@@ -28,6 +28,14 @@ CstExpr ast2cst(astbmul(AstExpr left, AstExpr right)) = newCstExpr(ast2cst(left)
 test bool vast2cst1() = ast2cst(types::Ast::example) == types::Cst::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Ast.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Cst.png)
+
 ### See also:
 * [types::Ast](https://github.com/grammarware/bx-parsing/blob/master/src/types/Ast.rsc)
 * [visualise::Ast](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Ast.rsc)

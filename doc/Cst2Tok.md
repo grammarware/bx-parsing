@@ -32,6 +32,14 @@ public Tok cst2tok(Cst p)
 test bool vcst2tok1() = cst2tok(types::Cst::example) == types::Tok::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Cst.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Tok.png)
+
 ### See also:
 * [types::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/types/Cst.rsc)
 * [visualise::Cst](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Cst.rsc)

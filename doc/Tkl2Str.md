@@ -14,6 +14,14 @@ public Str tkl2str(Tkl p) = intercalate("",p);
 test bool vtkl2str1() = tkl2str(types::Tkl::example) == types::Str::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Tkl.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Str.png)
+
 ### See also:
 * [types::Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/types/Tkl.rsc)
 * [visualise::Tkl](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Tkl.rsc)

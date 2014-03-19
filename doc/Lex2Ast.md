@@ -86,6 +86,14 @@ test bool vlex2ast5() = lex2ast(lexfundef(
     == astfundef("f",["arg"], astbplus(astbmul(astliteral(1),astliteral(2)),astliteral(3)));
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Lex.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Ast.png)
+
 ### See also:
 * [types::Lex](https://github.com/grammarware/bx-parsing/blob/master/src/types/Lex.rsc)
 * [visualise::Lex](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Lex.rsc)

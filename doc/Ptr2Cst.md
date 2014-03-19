@@ -36,6 +36,14 @@ CstNumber ptr2cst(PtrNumber n) = newCstNumber("<n>");
 test bool vptr2cst1() = ptr2cst(types::Ptr::example) == types::Cst::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Ptr.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Cst.png)
+
 ### See also:
 * [types::Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/types/Ptr.rsc)
 * [visualise::Ptr](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Ptr.rsc)

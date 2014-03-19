@@ -21,6 +21,14 @@ default AstExpr fig2ast(figbinary(str op, FigExpr left, FigExpr right)) = fig2as
 test bool tfig2ast1() = fig2ast(types::Fig::example) == types::Ast::example; 
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Fig.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Ast.png)
+
 ### See also:
 * [types::Fig](https://github.com/grammarware/bx-parsing/blob/master/src/types/Fig.rsc)
 * [visualise::Fig](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Fig.rsc)

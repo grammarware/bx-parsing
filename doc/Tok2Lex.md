@@ -39,6 +39,14 @@ default TokToken maptoken(str z) = ssymbol(z);
 test bool vtok2lex1() = tok2lex(types::Tok::example) == types::Lex::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Tok.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Lex.png)
+
 ### See also:
 * [types::Tok](https://github.com/grammarware/bx-parsing/blob/master/src/types/Tok.rsc)
 * [visualise::Tok](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Tok.rsc)

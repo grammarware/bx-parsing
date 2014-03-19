@@ -40,6 +40,14 @@ test bool vast2lex5() = ast2lex(astfundef("f",["arg"], astbplus(astbmul(astliter
                 [numeric(1),ssymbol("*"),numeric(2),ssymbol("+"),numeric(3),ssymbol(";")]);
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Ast.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Lex.png)
+
 ### See also:
 * [types::Ast](https://github.com/grammarware/bx-parsing/blob/master/src/types/Ast.rsc)
 * [visualise::Ast](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Ast.rsc)

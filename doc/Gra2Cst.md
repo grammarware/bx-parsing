@@ -27,6 +27,14 @@ CstExpr mapexpr(graprefix(grabox(gracurly(), str kind),grainfix(graempty(),[GraE
 test bool vgra2cst1() = gra2cst(types::Gra::example) == types::Cst::example;
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Gra.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Cst.png)
+
 ### See also:
 * [types::Gra](https://github.com/grammarware/bx-parsing/blob/master/src/types/Gra.rsc)
 * [visualise::Gra](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Gra.rsc)

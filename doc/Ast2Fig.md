@@ -21,6 +21,14 @@ FigExpr ast2fig(astbmul(AstExpr left, AstExpr right)) = figbinary("*", ast2fig(l
 test bool tast2fig1() = ast2fig(types::Ast::example) == types::Fig::example; 
 ```
 
+### Input
+
+![Input](https://github.com/grammarware/bx-parsing/raw/master/img/Ast.png)
+
+### Output
+
+![Output](https://github.com/grammarware/bx-parsing/raw/master/img/Fig.png)
+
 ### See also:
 * [types::Ast](https://github.com/grammarware/bx-parsing/blob/master/src/types/Ast.rsc)
 * [visualise::Ast](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Ast.rsc)

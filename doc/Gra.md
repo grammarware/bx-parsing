@@ -56,8 +56,10 @@ test bool vgra1() = validate(example);
 
 ### See also:
 * [mappings::Cst2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Cst2Gra.rsc)
+* [mappings::Dra2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Dra2Gra.rsc)
 * [mappings::Fig2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Fig2Gra.rsc)
 * [mappings::Gra2Cst](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Gra2Cst.rsc)
 * [mappings::Gra2Dra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Gra2Dra.rsc)
+* [mappings::Gra2Fig](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Gra2Fig.rsc)
 * [visualise::Gra](https://github.com/grammarware/bx-parsing/blob/master/src/visualise/Gra.rsc)
 * [specific::Gra2Pic](https://github.com/grammarware/bx-parsing/blob/master/src/specific/Gra2Pic.rsc)
