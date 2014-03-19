@@ -6,9 +6,9 @@ import vis::Figure;
 import vis::Render;
 import List;
 
-Figure vistoken(numeric(int n), int n) = ellipse(text("<n>"), gap(5), id("token<n>"));
-Figure vistoken(alphanumeric(str a), int n) = box(text(a), gap(5), id("token<n>"));
-Figure vistoken(ssymbol(str s), int n) = box(text("\'s\'", fontColor("white")), gap(5), fillColor("DimGray"), id("token<n>"));
+Figure vistoken(numeric(int k), int n) = ellipse(text("\'<k>\'"), gap(5), id("token<n>"));
+Figure vistoken(alphanumeric(str a), int n) = box(text("\'<a>\'"), gap(5), id("token<n>"));
+Figure vistoken(ssymbol(str s), int n) = box(text("\'<s>\'", fontColor("white")), gap(5), fillColor("DimGray"), id("token<n>"));
 
 public void visualise(Lex p) = render(visualised(p));
 public Figure visualised(Lex p) 

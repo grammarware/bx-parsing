@@ -52,7 +52,7 @@ list[str] seealso2(str name, loc not) = getlinks(name,not,"types") + getlinks(na
 void main()
 {
 	println("Generating figures...");
-	//lib::PNGFactory::renderto(|project://bx-parsing/img/|);
+	lib::PNGFactory::renderto(|project://bx-parsing/img/|);
 	println("Generating documentation for types...");
 	writeFile(|project://bx-parsing/doc/README.md|,readFile(|project://bx-parsing/README.md|));
 	for (loc z <- |project://bx-parsing/src/types/|.ls)
