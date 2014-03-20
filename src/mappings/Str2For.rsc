@@ -1,6 +1,7 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
-	TBD
+	Str to For is Rascal parsing, see
+	[parse()](http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/ParseTree/parse/parse.html).
 }
 module mappings::Str2For
 

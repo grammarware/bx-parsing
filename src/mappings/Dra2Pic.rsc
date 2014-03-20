@@ -1,6 +1,8 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
-	TBD
+	The Dra to Pic mapping is a rendering operation, which is pretty straightforward.
+	We already have all the elements and their coordinates, the only thing left to do is
+	to position them iteratively, increasing the size of the canvas when necessary.
 }
 module mappings::Dra2Pic
 

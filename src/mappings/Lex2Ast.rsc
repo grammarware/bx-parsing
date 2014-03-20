@@ -1,6 +1,16 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
-	TBD
+	We use the idea of hierarchical lexical analysis to make Lex even more structured,
+	which carries it closer and closer to Ast. It is rather straightforward to implement it
+	in Rascal due to a built-in
+	[Visitor](http://tutor.rascal-mpl.org/Rascal/Concepts/Visiting/Visiting.html)
+	language feature, see
+	[visit(){}](http://tutor.rascal-mpl.org/Rascal/Expressions/Visit/Visit.html)
+	construction.
+	
+	We also use an intermediate representation to store the structure which is being processed
+	(some parts are unmatched). If at the end of our algorithm some tokens still have not been processed,
+	then this Lex instance is incompatible to be converted to Ast.
 }
 module mappings::Lex2Ast
 
@@ -17,12 +27,7 @@ data IRLexAst
 	| lexlist(list[IRLexAst] ts)
 	;
 
-@doc{
-	Disregarding the semicolon can only be done based on some knowledge of the syntactic sugar.
-	Well, in this case, lexical sugar.
-}
-IRLexAst lex2ir(TokTokens ts)
-	= lexlist([lex2ir(t) | TokToken t <- ts, ssymbol(";") !:= t]);
+IRLexAst lex2ir(TokTokens ts) = lexlist([lex2ir(t) | TokToken t <- ts]);
 IRLexAst lex2ir(numeric(int n)) = lexliteral(n);
 IRLexAst lex2ir(alphanumeric(str a)) = lexvariable(a);
 IRLexAst lex2ir(ssymbol(str s)) = lexunprocessed(s);
@@ -41,13 +46,6 @@ default AstExpr ir2ast(IRLexAst e)
 public Ast lex2ast(Lex p)
 	= astfundef(p.left[0].a, [a | alphanumeric(str a) <- tail(p.left)], mapexpr(p.right));
 
-@doc{
-	We use the idea of hierarchical lexical analysis to make Lex even more structured,
-	which carries it closer and closer to Ast. It is rather straightforward to implement it
-	in Rascal due to a built-in Visitor language feature, see
-	http://tutor.rascal-mpl.org/Rascal/Concepts/Visiting.html
-	http://tutor.rascal-mpl.org/Rascal/Expressions/Visit.html
-}
 AstExpr mapexpr(list[TokToken] ts)
 {
 	IRLexAst ir = lex2ir(ts);
@@ -61,6 +59,7 @@ AstExpr mapexpr(list[TokToken] ts)
 		case [*L1, IRLexAst e1, lexunprocessed("+"), IRLexAst e2, *L2]
 			=> [*L1, lexplus(e1, e2), *L2]
 	};
+	assert lexunprocessed(_) !:= ir; 
 	return ir2ast(ir);
 }
 

@@ -1,6 +1,16 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
-	TBD
+	This Gra to Cst mapping is a little bit unconventional in the sense that it is not
+	usually considered due to the lack of tradition in bridging grammarware and modelware. 
+	
+	We have implemented this example in order to demonstrate implicit *lowering* of
+	[Fig2Ast](https://github.com/grammarware/bx-parsing/blob/master/doc/Fig2Ast.md)
+	serialisation. We would like to emphasize that the lowering is not explicit — there is
+	no call to `fig2ast()` here, but that call is a Type IV clone (a semantic equivalent) of
+	this code. The reason why these mappings often are programmed entirely is that some information
+	can be saved and propagated directly in the bidirectional case. For example, a graphical
+	model may visualise some syntactic sugar elements (like optional keywords) differently if that
+	suits the needs of the users. 
 }
 module mappings::Gra2Cst
 

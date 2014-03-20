@@ -1,6 +1,8 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
-	TBD
+	In Fig to Gra mapping, we need to introduce visualisation details: Fig information is too close
+	to the domain (it talks about functions, arguments and bodies), while we would like to have a model
+	that talks about boxes and arrows.
 }
 module mappings::Fig2Gra
 
