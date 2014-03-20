@@ -1,11 +1,12 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
- DFA (deterministic final automaton) is used to tokenise the example.
- The knowledge about structure is hard-coded to it.
- For example, it puts subsequent letters and subsequent digits into one token,
- but makes a token boundary when letters change to digits and vice versa.
- It also treats nonalphanumeric symbols individually, which is unacceptable for language
- with tokens like == or ->
+	[DFA](http://en.wikipedia.org/wiki/Deterministic_finite_automaton)
+	(deterministic final automaton) is used to tokenise the example.
+	The knowledge about structure is hard-coded to it.
+	For example, it puts subsequent letters and subsequent digits into one token,
+	but makes a token boundary when letters change to digits and vice versa.
+	It also treats nonalphanumeric symbols individually, which is unacceptable for language
+	with tokens like `==` or `->`.
 }
 module mappings::Str2Tkl
 

@@ -1,6 +1,7 @@
 ## [Tkl2Str](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Tkl2Str.rsc)
 
-Concatenation of a list of strings to a string is a library function.
+Concatenation of a list of strings to a string is a library function, see
+[intercalate()](http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/List/intercalate/intercalate.html).
 
 ```
 module mappings::Tkl2Str

@@ -1,4 +1,9 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	Gra to Fig is a model to model transformation that constructs conceptual entities such as functions,
+	arguments, expressions, from concrete visual notation elements such as confix round brackets and infix
+	arrows.
+}
 module mappings::Gra2Fig
 
 import types::Gra;

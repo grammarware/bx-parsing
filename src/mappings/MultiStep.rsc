@@ -12,6 +12,7 @@ import mappings::Cst2Ast;
 import mappings::Cst2Gra;
 import mappings::Cst2Ptr;
 import mappings::Cst2Tok;
+import mappings::Dra2Gra;
 import mappings::Dra2Pic;
 import mappings::Fig2Ast;
 import mappings::Fig2Gra;
@@ -19,8 +20,10 @@ import mappings::For2Ptr;
 import mappings::For2Str;
 import mappings::Gra2Cst;
 import mappings::Gra2Dra;
+import mappings::Gra2Fig;
 import mappings::Lex2Ast;
 import mappings::Lex2Tok;
+import mappings::Pic2Dra;
 import mappings::Ptr2Cst;
 import mappings::Ptr2Tkl;
 import mappings::Str2For;
@@ -29,8 +32,6 @@ import mappings::Tkl2Str;
 import mappings::Tkl2Tok;
 import mappings::Tok2Lex;
 import mappings::Tok2Tkl;
-import mappings::Dra2Gra;
-import mappings::Gra2Fig;
 import types::Str;
 import types::Tkl;
 import types::Tok;
@@ -85,9 +86,15 @@ public Pic fig2pic(Fig p) = dra2pic(gra2dra(fig2gra(p)));
 test bool vfig2pic1() = fig2pic(types::Fig::example) == types::Pic::example;
 
 public Dra fig2dra(Fig p) = gra2dra(fig2gra(p));
-test bool vfig2dra1() = dra2pic(fig2dra(types::Fig::example)) == dra2pic(types::Dra::example);
+test bool vfig2dra1() = fig2dra(types::Fig::example) == types::Dra::example;
 
 public Fig dra2fig(Dra p) = gra2fig(dra2gra(p));
 test bool vdra2fig1() = dra2fig(types::Dra::example) == types::Fig::example;
+
+public Gra pic2gra(Pic p) = dra2gra(pic2dra(p));
+test bool vpic2gra1() = pic2gra(types::Pic::example) == types::Gra::example;
+
+public Fig pic2fig(Pic p) = gra2fig(dra2gra(pic2dra(p)));
+test bool vpic2fig1() = pic2fig(types::Pic::example) == types::Fig::example;
 
 //def f(x,y,z): print 'public %s %s2%s(%s p) = %s2%s(%s2%s(p));\ntest bool v%s2%s1() = %s2%s(types::%s::example) == types::%s::example;' % (z, x.lower(),z.lower(),x, y.lower(),z.lower(),x.lower(),y.lower(), x.lower(),z.lower(), x.lower(),z.lower(), x,z)

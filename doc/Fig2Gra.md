@@ -1,6 +1,8 @@
 ## [Fig2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Fig2Gra.rsc)
 
-TBD
+In Fig to Gra mapping, we need to introduce visualisation details: Fig information is too close
+to the domain (it talks about functions, arguments and bodies), while we would like to have a model
+that talks about boxes and arrows.
 
 ```
 module mappings::Fig2Gra

@@ -4,9 +4,9 @@ Lex is the highest level model of a program that is obtained without examining i
 structure. Usually methods that rely on Lex, are more tolerant to deviations in their input,
 but also more prone to delivering wrong results due to their excessive robustness.
 
-In our case study, we model Lex as Rascal Algebraic Data Type, see
-http://tutor.rascal-mpl.org/Rascal/Declarations/AlgebraicDataType/AlgebraicDataType.html
-We only separated left hand side (function signature) from the right hand side (its body)
+In our case study, we model Lex as
+[Rascal Algebraic Data Type](http://tutor.rascal-mpl.org/Rascal/Declarations/AlgebraicDataType/AlgebraicDataType.html).
+We only separate left hand side (function signature) from the right hand side (its body)
 and classify tokens into three groups (numeric, alphabetic and special symbols).
 Some prior research on structured lexical models of software also utilise more deeply nested
 tree-like structures or loosely constructed trees with unparsed chunks.

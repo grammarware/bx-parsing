@@ -6,7 +6,7 @@
 	same behaviour is used for whitespace, and otherwise token boundaries are switches from
 	characters of one type (letters, digits, spaces) to characters of another.
 	
-	One of the consequences is that names like "var1" are disallowed (or rather split up in
+	One of the consequences is that names like `var1` are disallowed (or rather split up in
 	several tokens, which can be glued together later on). This may not be universally
 	desirable for all software languages. 
 	

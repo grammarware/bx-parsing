@@ -1,6 +1,7 @@
 ## [For2Str](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/For2Str.rsc)
 
-TBD
+For to Str is unparsing, and unparsing is provided by the Rascal library, see
+[unparse()](http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/ParseTree/unparse/unparse.html).
 
 ```
 module mappings::For2Str

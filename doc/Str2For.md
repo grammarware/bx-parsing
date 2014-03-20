@@ -1,6 +1,7 @@
 ## [Str2For](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Str2For.rsc)
 
-TBD
+Str to For is Rascal parsing, see
+[parse()](http://tutor.rascal-mpl.org/Rascal/Libraries/Prelude/ParseTree/parse/parse.html).
 
 ```
 module mappings::Str2For

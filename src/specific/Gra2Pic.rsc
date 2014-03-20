@@ -1,12 +1,12 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
 @doc{
 	Instead of going from Gra to Dra and then to Pic, we utilise Rascal pretty-printing
-	functionality, and make a much more reliable and human friendly printer. 
-	More about string comprehensions in the Rascal Tutor:
-	http://tutor.rascal-mpl.org/Rascal/Expressions/Values/String/String.html
+	functionality
+	([string comprehensions(http://tutor.rascal-mpl.org/Rascal/Expressions/Values/String/String.html)),
+	to make a much more reliable and human friendly printer. 
 	
-	All the low level computations on positioning our "boxes" are actually implicitly present
-	here since this is the semantics of the Rascal ' modifier in string comprehensions.
+	All the low level computations on positioning our “boxes” are actually implicitly present
+	here since this is the semantics of the Rascal `'` modifier in string comprehensions.
 }
 module specific::Gra2Pic
 

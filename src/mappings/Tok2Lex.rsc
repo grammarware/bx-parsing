@@ -30,7 +30,7 @@ public Lex tok2lex(Tok p)
 {
 	xs = split("=",p);
 	assert size(xs) == 2;
-	return lexfundef(maptokens(xs[0]),maptokens(xs[1]));
+	return lexfundef(maptokens(xs[0]),maptoken("="),maptokens(xs[1][..-1]),maptoken(xs[1][-1]));
 }
 
 TokTokens maptokens(list[str] ts) = [maptoken(t) | t <- ts];

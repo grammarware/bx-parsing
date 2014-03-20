@@ -2,7 +2,7 @@
 
 The Ptr to Tok mapping is a form of limited unparsing related to Ptr to Tkl, just showing that
 layout-related tokens can also be filtered out at the stage of traversal, not later on.
-Conceptually, this is a variation on Ptr -> Tkl -> Tok.
+Conceptually, this is a variation on Ptr → Tkl → Tok.
 
 ```
 module specific::Ptr2Tok
