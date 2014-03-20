@@ -21,7 +21,7 @@ data IRLexAst
 	Disregarding the semicolon can only be done based on some knowledge of the syntactic sugar.
 	Well, in this case, lexical sugar.
 }
-IRLexAst lex2ir(list[TokToken] ts)
+IRLexAst lex2ir(TokTokens ts)
 	= lexlist([lex2ir(t) | TokToken t <- ts, ssymbol(";") !:= t]);
 IRLexAst lex2ir(numeric(int n)) = lexliteral(n);
 IRLexAst lex2ir(alphanumeric(str a)) = lexvariable(a);

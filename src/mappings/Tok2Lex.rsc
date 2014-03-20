@@ -33,7 +33,7 @@ public Lex tok2lex(Tok p)
 	return lexfundef(maptokens(xs[0]),maptokens(xs[1]));
 }
 
-list[TokToken] maptokens(list[str] ts) = [maptoken(t) | t <- ts];
+TokTokens maptokens(list[str] ts) = [maptoken(t) | t <- ts];
 
 TokToken maptoken(str s:/[a-z]+/) = alphanumeric(s);
 TokToken maptoken(str n:/[0-9]+/) = numeric(toInt(n));
