@@ -1,4 +1,10 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+@doc{
+	In this mapping we make some assumptions about the structure of the drawing: for example,
+	we expect parenthesis to match. Parentheses in our “textual picture” correspond to box
+	containers in pixel visualisations, and the parenthesis matching thus corresponds to checking
+	whether other elements fit inside the box or are placed outside it.
+}
 module mappings::Dra2Gra
 
 import visualise::Gra;

@@ -23,18 +23,21 @@ data TokToken
     | alphanumeric(str a)
     | ssymbol(str s)
     ;
-data Lex = lexfundef(list[TokToken] left, list[TokToken] right);
+alias TokTokens = list[TokToken];
+data Lex = lexfundef(TokTokens left, TokToken sep, TokTokens right, TokToken end);
 
 Lex example = lexfundef(
                 [alphanumeric("f"),alphanumeric("arg")],
-                [alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]);
+                ssymbol("="),
+                [alphanumeric("arg"),ssymbol("+"),numeric(1)],
+                ssymbol(";"));
 
 bool isTokToken(numeric(int n)) = true;
 bool isTokToken(alphanumeric(str a)) = /[a-z0-9]+/ := a;
 bool isTokToken(ssymbol(str s)) = /[a-z0-9]+/ !:= s;
 default bool isTokToken(TokToken t) = false;
 
-bool isTokTokens(list[TokToken] ts) = (true | it && isTokToken(t) | t <- ts); 
+bool isTokTokens(TokTokens ts) = (true | it && isTokToken(t) | t <- ts); 
 
 public bool validate(Lex ls)
     = isTokTokens(ls.left)
@@ -44,14 +47,14 @@ public bool validate(Lex ls)
 
 test bool vlex1() = validate(example);
 test bool vlex2() = !validate(lexfundef(
-                        [alphanumeric("f")],
-                        [alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
+                        [alphanumeric("f")],ssymbol("="),
+                        [alphanumeric("arg"),ssymbol("+"),numeric(1)],ssymbol(";")));
 test bool vlex3() = !validate(lexfundef(
-                        [alphanumeric("f"),alphanumeric("!")],
-                        [alphanumeric("arg"),ssymbol("+"),numeric(1),ssymbol(";")]));
+                        [alphanumeric("f"),alphanumeric("!")],ssymbol("="),
+                        [alphanumeric("arg"),ssymbol("+"),numeric(1)],ssymbol(";")));
 test bool vlex4() = !validate(lexfundef(
-                        [alphanumeric("f"),alphanumeric("arg")],
-                        [alphanumeric("arg"),ssymbol("plus"),numeric(1),ssymbol(";")]));
+                        [alphanumeric("f"),alphanumeric("arg")],ssymbol("="),
+                        [alphanumeric("arg"),ssymbol("plus"),numeric(1)],ssymbol(";")));
 ```
 
 ### See also:

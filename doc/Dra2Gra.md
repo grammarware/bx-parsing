@@ -1,5 +1,11 @@
 ## [Dra2Gra](https://github.com/grammarware/bx-parsing/blob/master/src/mappings/Dra2Gra.rsc)
 
+In this mapping we make some assumptions about the structure of the drawing: for example,
+we expect parenthesis to match. Parentheses in our “textual picture” correspond to box
+containers in pixel visualisations, and the parenthesis matching thus corresponds to checking
+whether other elements fit inside the box or are placed outside it.
+
+```
 module mappings::Dra2Gra
 
 import visualise::Gra;
@@ -15,14 +21,14 @@ import mappings::Gra2Dra;
 public Gra dra2gra(Dra d) = matchdra(d.es);
 
 Gra matchdra([
-dracurly(str label, _),
-drasymbol("(", _),
-*A,
-drasymbol("→", _),
-*B,
-drasymbol(")", _)
-]) =
-gramodel(graprefix(grabox(gracurly(),label),graconfix(graround(),grainfix(graarrow(),[matchargs(A), matchbody(B)]))));
+        dracurly(str label, _),
+        drasymbol("(", _),
+        *A,
+        drasymbol("→", _),
+        *B,
+        drasymbol(")", _)
+    ]) =
+    gramodel(graprefix(grabox(gracurly(),label),graconfix(graround(),grainfix(graarrow(),[matchargs(A), matchbody(B)]))));
 
 GraElement matchargs([drasquare(str label, _)]) = grabox(grasquare(),label);
 default GraElement matchargs(list[DraElement] As) = grainfix(graempty(),[*matchargs([a]) | DraElement a <- As]);
@@ -31,15 +37,14 @@ GraElement matchbody([drasquare(str label, _)]) = grabox(grasquare(),label);
 GraElement matchbody([draround(str label, _)]) = grabox(graround(),label);
 default GraElement matchbody(list[DraElement] Es)
 {
-if (size(Es)<3) return graempty();
-if (dracurly(str label, _) !:= Es[0]) return graempty();
-border = 1+findsplit(Es[1..]);
-return
-graprefix(grabox(gracurly(),Es[0].label),grainfix(graempty(),
-[matchbody(Es[1..border]),matchbody(Es[border..])]
-));
-
-```
+    if (size(Es)<3) return graempty();
+    if (dracurly(str label, _) !:= Es[0]) return graempty();
+    border = 1+findsplit(Es[1..]);
+    return 
+        graprefix(grabox(gracurly(),Es[0].label),grainfix(graempty(),
+            [matchbody(Es[1..border]),matchbody(Es[border..])]
+        ));
+}
 
 int findsplit([drasquare(_,_), *L1]) = 1;
 int findsplit([draround(_,_), *L2]) = 1;
