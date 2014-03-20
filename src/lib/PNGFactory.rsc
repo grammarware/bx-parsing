@@ -45,7 +45,7 @@ void renderto(loc base)
 	renderSave(forcegrow(visualised(types::Lex::example)), base+"Lex.png");
 	
 	renderSave(forcegrow(visualised(types::For::example)), base+"For.png");
-	render(visualised(types::For::tricky));//, base+"For2.png");
+	//render(visualised(types::For::tricky));//, base+"For2.png");
 	renderSave(forcegrow(visualised(types::Ptr::example)), base+"Ptr.png");
 	renderSave(forcegrow(visualised(types::Cst::example)), base+"Cst.png");
 	renderSave(forcegrow(visualised(types::Ast::example)), base+"Ast.png");

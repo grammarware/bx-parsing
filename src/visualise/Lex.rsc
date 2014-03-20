@@ -16,8 +16,10 @@ public Figure visualised(Lex p)
 		box(text("lexfundef"), id("lexfundef"), gap(5)),
 	[
 		box(hcat([vistoken(p.left[i], i) | int i <- [0..size(p.left)]], gap(10), resizable(false)), id("left"), gap(10)),
-		box(hcat([vistoken(p.right[i], size(p.left)+i) | int i <- [0..size(p.right)]], gap(10), resizable(false)), id("right"), gap(10))
+		vistoken(p.sep,9000),
+		box(hcat([vistoken(p.right[i], size(p.left)+i) | int i <- [0..size(p.right)]], gap(10), resizable(false)), id("right"), gap(10)),
+		vistoken(p.end,9001)
 	],
-	gap(40), std(font("Monaco")));
+	vgap(40), hgap(10), std(font("Monaco")));
 
 void vislex1() = visualise(types::Lex::example);
