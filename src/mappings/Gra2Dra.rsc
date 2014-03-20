@@ -12,7 +12,7 @@ import types::Gra;
 import types::Dra;
 import lib::LocFactory;
 
-Dra gra2dra(gramodel(GraElement root)) = balancedra(drapicture(grarender(root,1,0)));
+Dra gra2dra(gramodel(GraElement root)) = balance(drapicture(grarender(root,1,0)));
 list[DraElement] grarender(graempty(), int line, int col) = [];
 list[DraElement] grarender(grabox(GraType t, GraLabel label), int line, int col)
 {
@@ -85,19 +85,6 @@ list[DraElement] grarender(graarrow(), int line, int col) = [onesymb("→",line,
 default list[DraElement] grarender(GraElement e, int line, int col)
 {
 	println("Cannot render <e>");
-}
-
-Dra balancedra(Dra p)
-{
-	list[DraElement] res = [];
-	int cx = 0;
-	for (e <- p.es)
-	{
-		e.where.offset = cx + e.where.begin.column;
-		cx += e.where.end.column + 1;
-		res += e;
-	}
-	return drapicture(res);
 }
 
 test bool vgra2dra1() = gra2dra(types::Gra::example) == types::Dra::example;

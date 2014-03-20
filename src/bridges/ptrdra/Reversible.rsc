@@ -40,5 +40,10 @@ Ptr dra2ptr(Dra R) throws UpdateException
 	return ptr;
 }
 
+// \overleftarrow{f} does not preserve the original indentation
 test bool vrev1() = dra2ptr(types::Dra::example) == types::Ptr::defexample;
+// \overrightarrow{f} maps both formattings to the same drawing
 test bool vrev2() = ptr2dra(types::Ptr::example) == types::Dra::example;
+test bool vrev3() = ptr2dra(types::Ptr::defexample) == types::Dra::example;
+// \overleftarrow{f} disregards edited visual positioning as well
+test bool vrev4() = dra2ptr(types::Dra::exedited) == types::Ptr::defexample;

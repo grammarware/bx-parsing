@@ -7,6 +7,8 @@ module bridges::ptrdra::Foster
 
 import types::Ptr;
 import types::Dra;
+import types::Ast;
+import types::Fig;
 import mappings::Dra2Pic;
 import mappings::Ast2Fig;
 import mappings::Fig2Ast;
@@ -18,16 +20,29 @@ import List;
 import ParseTree;
 
 import Exception;
-data RuntimeException = PutBackException();
+data RuntimeException = GetException() | PutBackException();
 
 // L = Ptr; R = Dra
-Dra get(Ptr L) = fig2dra(ast2fig(ptr2ast(L)));
+Dra get(Ptr L) throws UpdateException
+{
+	Ast ast = ptr2ast(L);
+	if (!validate(ast)) throw GetException();
+	Fig fig = ast2fig(ast);
+	if (!validate(fig)) throw GetException();
+	Dra dra = fig2dra(fig);
+	if (!validate(dra)) throw GetException(); 
+	return dra;
+}
 
 Ptr putback(Dra R, Ptr L) throws PutBackException
 {
-	newL = ast2ptr(fig2ast(dra2fig(R)));
-	if (!validate(newL)) throw PutBackException(); 
-	return putbacktt(L,newL);
+	Fig fig = dra2fig(R);
+	if (!validate(fig)) throw PutBackException();
+	Ast ast = fig2ast(fig);
+	if (!validate(ast)) throw PutBackException();
+	Ptr ptr = ast2ptr(ast);
+	if (!validate(ptr)) throw PutBackException(); 
+	return putbacktt(L,ptr);
 }
 
 Ptr putbacktt(
@@ -68,26 +83,13 @@ PtrExpr putbacktt(
 default PtrExpr putbacktt(PtrExpr main, PtrExpr updd) = updd;
 // NB: we don't try too hard, no oversophisticated matching going on here
 
-test bool vfoster1() = dra2pic(get(types::Ptr::example)) == dra2pic(types::Dra::example);
-test bool pfoster1()
-{
-	println(types::Dra::example);
-	println(get(types::Ptr::example));
-	return true;
-}
-
+// get works well
+test bool vfoster1() = get(types::Ptr::example) == types::Dra::example;
+// putback works just as well
 test bool vfoster2() = putback(types::Dra::example,types::Ptr::example) == types::Ptr::example;
-test bool pfoster2()
-{
-	println(types::Ptr::example);
-	println(putback(types::Dra::example,types::Ptr::example));
-	return true;
-}
-
-test bool vfoster3() = putback(types::Dra::example,parse(#Ptr,"f arg = 42 +arg   *\t\t9000;")) == types::Ptr::example;
-test bool pfoster3()
-{
-	println(types::Ptr::example);
-	println(putback(types::Dra::example,parse(#Ptr,"f arg = 2 +42   *\t\t9000;")));
-	return true;
-}
+// putback can do the same trick with default indentation
+test bool vfoster3() = putback(types::Dra::example,types::Ptr::defexample) == types::Ptr::defexample;
+// some more fancy stuff putback can do
+test bool vfoster4() = putback(types::Dra::example,parse(#Ptr,"f arg = 42 +arg   *\t\t9000;")) == types::Ptr::example;
+// yet putback disregards visual repositioning (breaks the PutGet law)
+test bool vfoster5() = get(putback(types::Dra::exedited,types::Ptr::example)) == types::Dra::example;

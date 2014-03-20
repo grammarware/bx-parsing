@@ -7,6 +7,8 @@ module bridges::ptrdra::Meertens
 
 import types::Ptr;
 import types::Dra;
+import types::Ast;
+import types::Fig;
 import mappings::Dra2Pic;
 import mappings::Ast2Fig;
 import mappings::Fig2Ast;
@@ -23,20 +25,28 @@ data RuntimeException = MaintainException();
 // L = Ptr; R = Dra
 Dra maintainR(Ptr L, Dra R) throws MaintainException
 {
-	newR = fig2dra(ast2fig(ptr2ast(L)));
-	if (!validate(newR)) throw MaintainException(); 
-	newnewR = syncR(R,newR);
-	if (!validate(newnewR)) throw MaintainException(); 
-	return newnewR;
+	Ast ast = ptr2ast(L);
+	if (!validate(ast)) throw MaintainException();
+	Fig fig = ast2fig(ast);
+	if (!validate(fig)) throw MaintainException();
+	Dra dra = fig2dra(fig);
+	if (!validate(dra)) throw MaintainException();
+	Dra res = syncR(R,dra); 
+	if (!validate(res)) throw MaintainException();
+	return res;
 }
 
 Ptr maintainL(Ptr L, Dra R) throws MaintainException
 {
-	newL = ast2ptr(fig2ast(dra2fig(R)));
-	if (!validate(newL)) throw MaintainException(); 
-	newnewL = syncL(L,newL);
-	if (!validate(newnewL)) throw MaintainException();
-	return newnewL;
+	Fig fig = dra2fig(R);
+	if (!validate(fig)) throw MaintainException();
+	Ast ast = fig2ast(fig);
+	if (!validate(ast)) throw MaintainException();
+	Ptr ptr = ast2ptr(ast);
+	if (!validate(ptr)) throw MaintainException();
+	Ptr res =  syncL(L,ptr);
+	if (!validate(res)) throw MaintainException();
+	return res;
 }
 
 // Maintaining the "right" part of the relation (Dra, a drawing of a model)
@@ -99,35 +109,19 @@ PtrExpr syncL(
 default PtrExpr syncL(PtrExpr main, PtrExpr updd) = updd;
 // NB: we don't try too hard, no oversophisticated matching going on here
 
-test bool vmeertens1() = dra2pic(maintainR(types::Ptr::example, types::Dra::example)) == dra2pic(types::Dra::example);
-test bool pmeertens1()
-{
-	println(types::Dra::example);
-	println(maintainR(types::Ptr::example, types::Dra::example));
-	return true;
-}
-
-test bool vmeertens2() = maintainL(types::Ptr::example,types::Dra::example) == types::Ptr::example;
-test bool pmeertens2()
-{
-	println(types::Ptr::example);
-	println(maintainL(types::Ptr::example,types::Dra::example));
-	return true;
-}
-
-test bool vmeertens3() = maintainL(parse(#Ptr,"f arg = 42 +arg   *\t\t9000;"),types::Dra::example) == types::Ptr::example;
-test bool pmeertens3()
-{
-	println(types::Ptr::example);
-	println(maintainL(parse(#Ptr,"f arg = 42 +arg   *\t\t9000;"),types::Dra::example));
-	return true;
-}
-
-// L = Ptr; R = Dra
-test bool vmeertens4() = dra2pic(maintainR(parse(#Ptr,"f arg = arg   +\t\t1;"),types::Dra::example)) == dra2pic(types::Dra::example);
-test bool pmeertens4()
-{
-	println(types::Dra::example);
-	println(maintainR(parse(#Ptr,"f arg = arg   +\t\t1;"),types::Dra::example));
-	return true;
-}
+// right semi-maintainer works
+test bool vmeertens1() = maintainR(types::Ptr::example, types::Dra::example) == types::Dra::example;
+// right semi-maintainer works on default formatting
+test bool vmeertens2() = maintainR(types::Ptr::defexample, types::Dra::example) == types::Dra::example;
+// right semi-maintainer works on repositioned model
+test bool vmeertens3() = maintainR(types::Ptr::example, types::Dra::exedited) == types::Dra::exedited;
+// left semi-maintainer works
+test bool vmeertens4() = maintainL(types::Ptr::example,types::Dra::example) == types::Ptr::example;
+// left semi-maintainer works on default formatting
+test bool vmeertens5() = maintainL(types::Ptr::defexample,types::Dra::example) == types::Ptr::defexample;
+// left semi-maintainer works on repositioned model
+test bool vmeertens6() = maintainL(types::Ptr::example,types::Dra::exedited) == types::Ptr::example;
+// left maintainer can do more fancy stuff
+test bool vmeertens7() = maintainL(parse(#Ptr,"f arg = 42 +arg   *\t\t9000;"),types::Dra::example) == types::Ptr::example;
+// right maintainer doesn’t want to lose
+test bool vmeertens8() = maintainR(parse(#Ptr,"f arg = arg   +\t\t1;"),types::Dra::example) == types::Dra::example;

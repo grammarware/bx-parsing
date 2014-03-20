@@ -9,7 +9,8 @@
 }
 module types::Dra
 
-data Dra = drapicture(list[DraElement] es);
+data Dra = drapicture(DraElements es);
+alias DraElements = list[DraElement];
 data DraElement
 	= drasquare(str label, loc where)
 	| draround(str label, loc where)
@@ -28,8 +29,34 @@ Dra example = drapicture
 		draround("1",    |stdin:///|(36,3,<7,3>,<7,6>)),
 		drasymbol(")",   |stdin:///|(41,1,<8,1>,<8,2>))
 	]);
+// Basically everywhere two tabs instead of one
+Dra exedited = drapicture
+	([
+		dracurly("f",    |stdin:///|(0,3,<1,0>,<1,3>)),
+		drasymbol("(",   |stdin:///|(6,1,<2,2>,<2,3>)),
+		drasquare("arg", |stdin:///|(12,5,<3,4>,<3,9>)),
+		drasymbol("→",   |stdin:///|(20,1,<4,2>,<4,3>)),
+		dracurly("+",    |stdin:///|(26,3,<5,4>,<5,7>)),
+		drasquare("arg", |stdin:///|(36,5,<6,6>,<6,11>)),
+		draround("1",    |stdin:///|(48,3,<7,6>,<7,9>)),
+		drasymbol(")",   |stdin:///|(54,1,<8,2>,<8,3>))
+	]);
 
 public bool validate(Dra d) = 
 	(true | it && e.where.length == e.where.end.column-e.where.begin.column | DraElement e <- d.es);
 
+public Dra balance(Dra p)
+{
+	DraElements res = [];
+	int cx = 0;
+	for (e <- p.es)
+	{
+		e.where.offset = cx + e.where.begin.column;
+		cx += e.where.end.column + 1;
+		res += e;
+	}
+	return drapicture(res);
+}
+
 test bool vdra1() = validate(example);
+test bool vdra2() = validate(exedited);
