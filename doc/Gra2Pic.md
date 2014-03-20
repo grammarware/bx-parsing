@@ -1,9 +1,9 @@
 ## [Gra2Pic](https://github.com/grammarware/bx-parsing/blob/master/src/specific/Gra2Pic.rsc)
 
 Instead of going from Gra to Dra and then to Pic, we utilise Rascal pretty-printing
-functionality
-([string comprehensions(http://tutor.rascal-mpl.org/Rascal/Expressions/Values/String/String.html)),
-to make a much more reliable and human friendly printer.
+functionality — see
+[string comprehensions](http://tutor.rascal-mpl.org/Rascal/Expressions/Values/String/String.html)
+— to make a much more reliable and human friendly printer.
 
 All the low level computations on positioning our “boxes” are actually implicitly present
 here since this is the semantics of the Rascal `'` modifier in string comprehensions.
