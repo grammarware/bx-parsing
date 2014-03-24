@@ -32,7 +32,11 @@ There are approximately **60** files total with **2800** lines of code and comme
 
 ![Megamodel](https://github.com/grammarware/bx-parsing/raw/master/megamodel.png)
 
-...as well as alternative [Gra→Pic](https://github.com/grammarware/bx-parsing/blob/master/doc/Gra2Pic.md), [Ptr→Tok](https://github.com/grammarware/bx-parsing/blob/master/doc/Ptr2Tok.md) and [Str→Lex](https://github.com/grammarware/bx-parsing/blob/master/doc/Str2Lex.md) mappings and several versions of *bidirectional* mappings between **Ptr** and **Dra**: [Foster BX](https://github.com/grammarware/bx-parsing/blob/master/src/bridges/ptrdra/Foster.rsc) and [Meertens BX](https://github.com/grammarware/bx-parsing/blob/master/src/bridges/ptrdra/Meertens.rsc).
+...as well as alternative [Gra→Pic](https://github.com/grammarware/bx-parsing/blob/master/doc/Gra2Pic.md), [Ptr→Tok](https://github.com/grammarware/bx-parsing/blob/master/doc/Ptr2Tok.md) and [Str→Lex](https://github.com/grammarware/bx-parsing/blob/master/doc/Str2Lex.md) mappings and several versions of *bidirectional* mappings between **Ptr** and **Dra**:
+* [Reversible function](https://github.com/grammarware/bx-parsing/blob/master/src/bridges/ptrdra/Reversible.rsc)
+* [Foster BX](https://github.com/grammarware/bx-parsing/blob/master/src/bridges/ptrdra/Foster.rsc)
+* [Meertens BX](https://github.com/grammarware/bx-parsing/blob/master/src/bridges/ptrdra/Meertens.rsc)
+* [Final BX](https://github.com/grammarware/bx-parsing/blob/master/src/bridges/ptrdra/Final.rsc)
 
 ---
 Yours,
