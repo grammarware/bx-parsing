@@ -1,11 +1,12 @@
 @contributor{Vadim Zaytsev - vadim@grammarware.net - UvA}
+
 @doc{
 	For now this library is implemented in an inefficient and somewhat cheating way:
 	it constructs the trees by parsing a concatenation of unparsed components,
 	but we want to encapsulate this implementation separately in order to circumvent
 	the fact that this functionality is not provided by Rascal.
 	
-	TODO: rewrite this to use appl(...) directly to construct valid trees
+	TODO: rewrite this to use appl(...) directly to construct valid trees.
 }
 module lib::CstFactory
 
