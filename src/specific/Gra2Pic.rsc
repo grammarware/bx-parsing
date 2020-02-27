@@ -17,7 +17,10 @@ import mappings::MultiStep;
 import List;
 import String;
 
-public str gra2pic_r(Gra g) = intercalate("\n",[s | str s <- split("\n",gra2pic_r(g.root)), trim(s) != ""]);
+private str NL = "
+'";
+
+public str gra2pic_r(Gra g) = intercalate(NL, [s | str s <- split(NL, gra2pic_r(g.root)), trim(s) != ""]);
 // GraElement
 str gra2pic_r(graempty()) = "";
 str gra2pic_r(graarrow()) = "→";
