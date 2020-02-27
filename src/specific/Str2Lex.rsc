@@ -39,7 +39,7 @@ public Lex altstr2lex(Str p)
 {
 	AltLex a = parse(#AltLex,p);
  	return lexfundef(
-		implodetokimplode(#TokTokens,a.left),
+		implode(#TokTokens,a.left),
 		ssymbol("="),
 		implode(#TokTokens,a.right),
 		ssymbol(";"));
