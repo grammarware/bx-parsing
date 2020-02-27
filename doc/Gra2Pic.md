@@ -18,7 +18,10 @@ import mappings::MultiStep;
 import List;
 import String;
 
-public str gra2pic_r(Gra g) = intercalate("\n",[s | str s <- split("\n",gra2pic_r(g.root)), trim(s) != ""]);
+private str NL = "
+'";
+
+public str gra2pic_r(Gra g) = intercalate(NL, [s | str s <- split(NL, gra2pic_r(g.root)), trim(s) != ""]);
 // GraElement
 str gra2pic_r(graempty()) = "";
 str gra2pic_r(graarrow()) = "→";
@@ -60,7 +63,7 @@ str gratype2right(graround()) = ")";
 str gratype2right(gracurly()) = "}";
 
 test bool xgra2pic1() = gra2pic_r(types::Gra::example) == types::Pic::example;
-test bool xgra2pic2() = gra2pic_r(types::Gra::example) == gra2pic(types::Gra::example);
+test bool xgra2pic2() = gra2pic_r(types::Gra::example) == gra2pic(types::Gra::example);
 ```
 
 ### Input

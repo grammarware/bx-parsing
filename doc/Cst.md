@@ -18,10 +18,9 @@ This specification utilises many features, including:
 ```
 module types::Cst
 
+extend lang::std::Layout;
 import ParseTree;
 
-layout L = WS*;
-lexical WS = [\ \t\n\r];
 start syntax Cst = CstLHS lhs "=" CstRHS rhs ";";
 syntax CstLHS = CstName f CstNameArgs args;
 syntax CstRHS = CstExpr rhs;
@@ -38,13 +37,13 @@ syntax CstAtom
 lexical CstName = [a-z]+ !>> [a-z];
 lexical CstNumber = [0-9]+ !>> [0-9];
 
-Cst example = parse(#start[Cst],"f arg = arg +1;").top;
-Cst tricky = parse(#start[Cst],"f arg = 1+2*2+1;").top;
+Cst example = parse(#start[Cst],"f arg = arg +1;", allowAmbiguity=true).top;
+Cst tricky = parse(#start[Cst],"f arg = 1+2*2+1;", allowAmbiguity=true).top;
 
 public bool validate(Cst p) = /amb(_) !:= p;
 
 test bool vCst1() = validate(example);
-test bool vCst2() = validate(tricky);
+test bool vCst2() = validate(tricky);
 ```
 
 ### See also:

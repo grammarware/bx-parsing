@@ -11,9 +11,9 @@
 module mappings::Cst2Tok
 
 import ParseTree;
+
 import types::Cst;
 import types::Tok;
-import IO;
 
 public Tok cst2tok(Cst p)
 {

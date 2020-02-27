@@ -13,6 +13,8 @@ is easy.
 module mappings::Cst2Gra
 
 import List;
+import ParseTree;
+
 import types::Cst;
 import types::Gra;
 
@@ -34,7 +36,7 @@ GraElement mapexpr((CstExpr)`<CstExpr l>+<CstExpr r>`)
 GraElement mapatom((CstAtom)`<CstName name>`) = grabox(grasquare(),"<name>");
 GraElement mapatom((CstAtom)`<CstNumber number>`) = grabox(graround(),"<number>");
         
-test bool vcst2gra1() = cst2gra(types::Cst::example) == types::Gra::example;
+test bool vcst2gra1() = cst2gra(types::Cst::example) == types::Gra::example;
 ```
 
 ### Input

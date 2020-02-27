@@ -40,13 +40,13 @@ public Lex altstr2lex(Str p)
 {
     AltLex a = parse(#AltLex,p);
      return lexfundef(
-        implodetokimplode(#TokTokens,a.left),
+        implode(#TokTokens,a.left),
         ssymbol("="),
         implode(#TokTokens,a.right),
         ssymbol(";"));
 }
 
-test bool xstr2lex1() = altstr2lex(types::Str::example) == types::Lex::example;
+test bool xstr2lex1() = altstr2lex(types::Str::example) == types::Lex::example;
 ```
 
 ### Input

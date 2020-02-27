@@ -19,7 +19,7 @@ This repository contains the source code of the case study demonstrating our bid
 * recognising
 * ...
 
-There are approximately **60** files total with **2800** lines of code and comments committed to this repository. To run all this code, you will need the [Rascal](http://www.rascal-mpl.org/start/) language workbench. The repository contains specifications of twelve kinds of software artefacts related to (un)parsing and many mappings between them:
+There are approximately **70** files total with **3200** lines of code and comments committed to this repository. To run all this code, you will need the [Rascal](http://www.rascal-mpl.org/start/) language workbench. The repository contains specifications of twelve kinds of software artefacts related to (un)parsing and many mappings between them:
 
 
 &nbsp; | Textual | | Structured | | Graphical
