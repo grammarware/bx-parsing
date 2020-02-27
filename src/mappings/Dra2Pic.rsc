@@ -11,6 +11,10 @@ import types::Pic;
 
 import List;
 import String;
+import util::Math;
+
+private str NL = "
+'";
 
 public Pic dra2pic(Dra d)
 {
@@ -24,9 +28,10 @@ public Pic dra2pic(Dra d)
 			assert e.where.length == size(e.label);
 		while (e.where.begin.line >= size(res)) res += [""];
 		while (e.where.begin.column > size(res[e.where.begin.line])) res[e.where.begin.line] += "\t";
-		res[e.where.begin.line][e.where.begin.column..e.where.end.column] = bracketit(e);
+		end = min(e.where.end.column, size(res[e.where.begin.line])); // safeguard
+		res[e.where.begin.line][e.where.begin.column..end] = bracketit(e);
 	}
-	return intercalate("\n",tail(res));
+	return intercalate(NL, tail(res));
 }
 
 str bracketit(drasquare(str label, loc _)) = "[<label>]";
