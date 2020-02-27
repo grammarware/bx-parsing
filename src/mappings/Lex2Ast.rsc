@@ -15,6 +15,8 @@
 module mappings::Lex2Ast
 
 import IO;
+import List;
+
 import types::Lex;
 import types::Ast;
 
@@ -68,17 +70,25 @@ AstExpr mapexpr(list[TokToken] ts)
 test bool vlex2ast1() = lex2ast(types::Lex::example) == types::Ast::example;
 test bool vlex2ast2() = lex2ast(lexfundef(
 				[alphanumeric("f"),alphanumeric("arg")],
-				[numeric(1),ssymbol("+"),numeric(2),ssymbol(";")]))
+				ssymbol("="),
+				[numeric(1),ssymbol("+"),numeric(2)],
+				ssymbol(";")))
 	== astfundef("f",["arg"], astbplus(astliteral(1),astliteral(2)));
 test bool vlex2ast3() = lex2ast(lexfundef(
 				[alphanumeric("f"),alphanumeric("arg")],
-				[numeric(1),ssymbol("*"),numeric(2),ssymbol(";")]))
+				ssymbol("="),
+				[numeric(1),ssymbol("*"),numeric(2)],
+				ssymbol(";")))
 	== astfundef("f",["arg"], astbmul(astliteral(1),astliteral(2)));
 test bool vlex2ast4() = lex2ast(lexfundef(
 				[alphanumeric("f"),alphanumeric("arg")],
-				[numeric(1),ssymbol("+"),numeric(2),ssymbol("*"),numeric(3),ssymbol(";")]))
+				ssymbol("="),
+				[numeric(1),ssymbol("+"),numeric(2),ssymbol("*"),numeric(3)],
+				ssymbol(";")))
 	== astfundef("f",["arg"], astbplus(astliteral(1),astbmul(astliteral(2),astliteral(3))) );
 test bool vlex2ast5() = lex2ast(lexfundef(
 				[alphanumeric("f"),alphanumeric("arg")],
-				[numeric(1),ssymbol("*"),numeric(2),ssymbol("+"),numeric(3),ssymbol(";")]))
+				ssymbol("="),
+				[numeric(1),ssymbol("*"),numeric(2),ssymbol("+"),numeric(3)],
+				ssymbol(";")))
 	== astfundef("f",["arg"], astbplus(astbmul(astliteral(1),astliteral(2)),astliteral(3)));
