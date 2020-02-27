@@ -9,7 +9,7 @@ import ParseTree;
 import types::Str;
 import types::For;
 
-For str2for(Str p) = parse(#For,p);
+For str2for(Str p) = parse(#For, p, allowAmbiguity=true);
 
 test bool vstr2for1() = validate(str2for(types::Str::example));
 test bool vstr2for2() = validate(str2for(types::Str::defexample));
