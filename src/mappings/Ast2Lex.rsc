@@ -12,17 +12,20 @@ import types::Ast;
 
 public Lex ast2lex(Ast p)
 	= lexfundef(
-		[alphanumeric(p.name)] + [alphanumeric(a) | a <- p.args],
+		mapalphas([p.name] + p.args),
 		ssymbol("="),
 		mapexpr(p.body),
 		ssymbol(";")); 
 
+private list[TokToken] mapalphas(list[str] names) = [alphanumeric(n) | n <- names];
+
 list[TokToken] mapexpr(astvariable(AstName name)) = [alphanumeric(name)];
 list[TokToken] mapexpr(astliteral(AstNumber number)) = [numeric(number)];
-list[TokToken] mapexpr(astbplus(AstExpr left, AstExpr right))
-	= mapexpr(left) + [ssymbol("+")] + mapexpr(right);
-list[TokToken] mapexpr(astbmul(AstExpr left, AstExpr right))
-	= mapexpr(left) + [ssymbol("*")] + mapexpr(right);
+list[TokToken] mapexpr(astbplus(AstExpr left, AstExpr right)) = gluewith(left, "+", right);
+list[TokToken] mapexpr(astbmul(AstExpr left, AstExpr right)) = gluewith(left, "*", right);
+
+private list[TokToken] gluewith(AstExpr e1, str op, AstExpr e2)
+	= [*mapexpr(e1), ssymbol(op), *mapexpr(e2)];
 
 // NB: the actual mapping is much more intricate than the running example,
 // so we need more test cases.
