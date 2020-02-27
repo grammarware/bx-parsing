@@ -13,16 +13,16 @@ module mappings::Cst2Tok
 import ParseTree;
 import types::Cst;
 import types::Tok;
+import IO;
 
 public Tok cst2tok(Cst p)
 {
 	Tok ts = [];
-	// Find layout
-	set[Symbol] black = {guilty | /prod(layouts(_),[\iter-star(Symbol guilty)],_) := p};
 	top-down visit(p)
 	{
+		// Cst uses standard Rascal layout which we know is called Whitespace at the lexical level
 		case t:appl(prod(Symbol name,_,_), _) :
-			if ((lex(_) := name || lit(_) := name) && name notin black)
+			if ((lex(_) := name || lit(_) := name) && lex("Whitespace") !:= name)
 				ts += unparse(t);
 	}
 	return ts;
