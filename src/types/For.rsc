@@ -39,8 +39,8 @@ public bool validate(For p) = true;
 
 public void visualise(For p) = renderParsetree(p);
 
-For example  = parse(#For, "f arg = arg +1+1;", allowAmbiguity=true);
-For instance = parse(#For,"f x = 1+2*3+4;", allowAmbiguity=true);
+For example = parse(#For, "f arg = arg +1;", allowAmbiguity=true);
+For tricky  = parse(#For,"f arg = 1+2*3+4;", allowAmbiguity=true);
 
 test bool vfor0() = /amb(_) := example;
 test bool vfor1() = /amb(_) := parse(#For,"f arg = 1+1+1;", allowAmbiguity=true);
@@ -49,6 +49,6 @@ test bool vfor3() = /amb(_) := parse(#For,"f arg = 1*1+1;", allowAmbiguity=true)
 test bool vfor4() = /amb(_) := parse(#For,"f arg = 1;", allowAmbiguity=true);
 
 void visfor1() = visualise(example);
-void visfor2() = visualise(instance);
+void visfor2() = visualise(tricky);
 void visfor3() = visualise(parse(#For,"f arg = 1;", allowAmbiguity=true));
 // Rascal does not draw lexical ambiguities :(
